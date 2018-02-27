@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-pages',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
   isCollapsed = false;
-  constructor() { }
+  constructor(private activeRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    this.activeRoute.url.subscribe(data=>{console.log(data)});
   }
 
 }

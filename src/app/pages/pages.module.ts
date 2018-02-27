@@ -9,6 +9,9 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgZorroAntdModule} from "ng-zorro-antd";
 import {PagesComponent} from "./pages.component";
 import { UploadComponent } from './upload/upload.component';
+import { LoginComponent } from './login/login.component';
+import {ApiService} from '../../shared/api.service';
+import {JwtService} from "../../shared/jwt.service";
 
 @NgModule({
   imports: [
@@ -18,8 +21,9 @@ import { UploadComponent } from './upload/upload.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgZorroAntdModule.forRoot(),
-    RouterModule.forRoot(route),
+    RouterModule.forRoot(route,{enableTracing:true,useHash:true}),
   ],
-  declarations: [PagesComponent,IndexComponent, UploadComponent]
+  providers:[ApiService,JwtService],
+  declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent]
 })
 export class PagesModule { }
