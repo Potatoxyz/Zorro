@@ -2,6 +2,7 @@
   <nz-upload
     nzAction="http://localhost:3000/server/upload"
     nzListType="picture-card"
+    [nzHeaders]="{'Authorization':jwt.getToken()}"
     [(nzFileList)]="fileList"
     [nzShowButton]="fileList.length < 3"
     [nzMultiple]="true"

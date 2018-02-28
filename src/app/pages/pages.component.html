@@ -46,10 +46,11 @@
           <nz-avatar nzIcon="user" style="top:10px;" nz-dropdown class="icon"></nz-avatar>
           <ul nz-menu>
             <li nz-menu-item>
-              <i class="anticon anticon-setting" style="margin-right: 10px"></i>个人设置
+              <a href="javascript:;"><i class="anticon anticon-setting" style="margin-right: 10px"></i>个人设置</a>
             </li>
-            <li nz-menu-item>
-              <i class="anticon anticon-poweroff" style="margin-right: 10px"></i>退出登录
+            <li nz-menu-item (click)="quit()">
+              <a href="javascript:;"><i class="anticon anticon-poweroff" style="margin-right: 10px"></i>退出登录
+              </a>
             </li>
           </ul>
         </nz-dropdown>

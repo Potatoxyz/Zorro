@@ -38,7 +38,7 @@
 :host ::ng-deep .nav-icon-wraper .icon{
   cursor: pointer;
 }
-.ant-dropdown-menu-item:hover{
+.ant-dropdown-menu-item:hover>a{
   color: green;
 }
 .head-example {

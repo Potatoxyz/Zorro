@@ -12,6 +12,7 @@ import { UploadComponent } from './upload/upload.component';
 import { LoginComponent } from './login/login.component';
 import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
+import {PagesRoutingGuard} from "./pages.routing.guard";
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import {JwtService} from "../../shared/jwt.service";
     NgZorroAntdModule.forRoot(),
     RouterModule.forRoot(route,{enableTracing:true,useHash:true}),
   ],
-  providers:[ApiService,JwtService],
+  providers:[ApiService,JwtService,PagesRoutingGuard],
   declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent]
 })
 export class PagesModule { }

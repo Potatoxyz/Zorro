@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {JwtService} from "../../shared/jwt.service";
 
 @Component({
   selector: 'app-pages',
@@ -8,10 +9,17 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PagesComponent implements OnInit {
   isCollapsed = false;
-  constructor(private activeRoute:ActivatedRoute) { }
+  constructor(private jwt:JwtService,
+              private Router:Router) { }
 
   ngOnInit() {
-    this.activeRoute.url.subscribe(data=>{console.log(data)});
+    if(this.jwt.getToken()){
+      console.log('存在jwt，已登录');
+    }
   }
-
+  quit(){
+    this.jwt.delToken();
+    this.Router.navigateByUrl('/login');
+    console.log(this.jwt.getToken());
+  }
 }
