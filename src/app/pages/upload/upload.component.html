@@ -1,8 +1,19 @@
+<div class="clearfix" style="margin-bottom: 15px;">
+  <nz-cascader
+    [class.class123]="true"
+    [nzOptions]="_options"
+    [(ngModel)]="_value"
+    (ngModelChange)="_console($event)"
+    [nzPlaceHolder]="'请选择科目和章节'"
+    [nzAllowClear]="false"
+    (nzChange)="_console($event)">
+  </nz-cascader>
+</div>
 <div class="clearfix">
   <nz-upload
     nzAction="http://localhost:3000/server/upload"
     nzListType="picture-card"
-    [nzHeaders]="{'Authorization':jwt.getToken()}"
+    [nzHeaders]="Header"
     [(nzFileList)]="fileList"
     [nzShowButton]="fileList.length < 3"
     [nzMultiple]="true"
