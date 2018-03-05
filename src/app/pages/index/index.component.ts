@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IndexService} from "./index.service";
+import {ActivatedRoute, NavigationExtras, Route, Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -14,7 +15,8 @@ export class IndexComponent implements OnInit {
     textAlign: 'center',
   };
   cardsContent:Array<any>=[];
-  constructor(private indexService:IndexService) {
+  constructor(private indexService:IndexService,
+              private router:Router) {
     this.cardsContent=indexService.cardsContent;
   }
 
@@ -22,7 +24,8 @@ export class IndexComponent implements OnInit {
     this.Plans.push({complete:false,message:'hahaha'});
   }
   navgateToPic(){
-
+    let options:NavigationExtras={queryParams:{subject:'1111',chapter:'111'}};
+   this.router.navigateByUrl('/pages/display',options);
   }
 }
 export class PlansModel{

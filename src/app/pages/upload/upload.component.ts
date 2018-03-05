@@ -47,6 +47,5 @@ export class UploadComponent implements OnInit {
     //console.log(value);
     this.selectedChapter=value.toString();
     console.log(this.selectedChapter);
-    this.Header['targetFile']=this.selectedChapter;
   }
 }

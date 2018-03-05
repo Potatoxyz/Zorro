@@ -18,6 +18,7 @@
     [nzShowButton]="fileList.length < 3"
     [nzMultiple]="true"
     [nzLimit]="0"
+    [nzData]="{'targetfile':selectedChapter}"
     [nzAccept]="'image/*'"
     (nzChange)="statuChange($event)"
     [nzPreview]="handlePreview">

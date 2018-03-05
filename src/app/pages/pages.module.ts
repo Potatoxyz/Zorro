@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
 import {PagesRoutingGuard} from "./pages.routing.guard";
+import { DisplayPicComponent } from './display-pic/display-pic.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import {PagesRoutingGuard} from "./pages.routing.guard";
     RouterModule.forRoot(route,{enableTracing:true,useHash:true}),
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard],
-  declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent]
+  declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent, DisplayPicComponent]
 })
 export class PagesModule { }
