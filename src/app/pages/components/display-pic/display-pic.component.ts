@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {NzCarouselComponent} from "ng-zorro-antd";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-display-pic',
@@ -10,10 +9,10 @@ import {ActivatedRoute} from "@angular/router";
 export class DisplayPicComponent implements OnInit,AfterViewInit {
   @ViewChild(NzCarouselComponent) Carousel:NzCarouselComponent;
   array = [ 1, 2, 3, 4 ];
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    this.loadData();
+
   }
   ngAfterViewInit(){
     let d=document.activeElement;
@@ -27,7 +26,5 @@ export class DisplayPicComponent implements OnInit,AfterViewInit {
       }
     });
   }
-  loadData(){
 
-  }
 }

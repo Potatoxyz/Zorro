@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
 import {PagesRoutingGuard} from "./pages.routing.guard";
-import { DisplayPicComponent } from './display-pic/display-pic.component';
+import { DisplayPicComponent } from './components/display-pic/display-pic.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { DisplayPicComponent } from './display-pic/display-pic.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgZorroAntdModule.forRoot(),
-    RouterModule.forRoot(route,{enableTracing:true,useHash:true}),
+    RouterModule.forChild(route),
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard],
   declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent, DisplayPicComponent]

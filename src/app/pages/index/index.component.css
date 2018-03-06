@@ -11,3 +11,28 @@
 .card:hover{
   box-shadow: 2px 2px 10px black;
 }
+:host{
+  position: relative;
+}
+.container{
+  width: 200%;
+  overflow: hidden;
+  position: relative;
+}
+#link-wrapper{
+  width: 50%;
+  float: left;
+}
+#img-wrapper{
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top:40px;
+}
+.r40{
+  right: 40px;
+}
+.r0{
+  right: 0;
+}

@@ -1,8 +1,8 @@
-<nz-timeline>
-  <div class="plan" *ngFor="let item of Plans">
-    <nz-timeline-item [nzColor]="'green'">{{item.message}}</nz-timeline-item>
+<div class="container">
+  <div class="button-wrapper" style="height: 28px;">
+    <button nz-button [nzType]="'primary'" *ngIf="!show" (click)="show=!show">返回章节列表</button>
   </div>
-</nz-timeline>
+<div class="link-wrapper" id="link-wrapper" [@displayPic]="show?'show':'hide'">
 <nz-card nzNoHovering>
   <ng-template #title>卡片标题</ng-template>
   <ng-template #body >
@@ -19,3 +19,8 @@
     </div>
   </ng-template>
 </nz-card>
+</div>
+<div id="img-wrapper" [@displayPic]="show?'show':'hide'" [ngStyle]="{'right':show?'-40px':'0'}">
+  <app-display-pic></app-display-pic>
+</div>
+</div>

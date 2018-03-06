@@ -4,26 +4,22 @@
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
       <li nz-menu-item>
-        <a href="javascript:;" [routerLink]="'/pages/index'">
+        <a href="javascript:;" [routerLink]="'index'">
           <span title><i class="anticon anticon-home"></i><span class="nav-text">首页</span></span>
         </a>
       </li>
       <li nz-submenu>
-        <span title><i class="anticon anticon-user"></i><span class="nav-text">User</span></span>
+        <span title><i class="anticon anticon-user"></i><span class="nav-text">教师</span></span>
         <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
-      </li>
-      <li nz-submenu>
-        <span title><i class="anticon anticon-team"></i><span class="nav-text">Team</span></span>
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
+          <li nz-menu-item>
+            <a href="javascript:;" [routerLink]="'teacher/teacher-plan'">
+              <span title><i class="anticon anticon-home"></i><span class="nav-text">教学计划</span></span>
+            </a>
+          </li>
         </ul>
       </li>
       <li nz-menu-item>
-        <a href="javascript:;" [routerLink]="'/pages/upload'">
+        <a href="javascript:;" [routerLink]="'upload'">
           <span><i class="anticon anticon-file"></i><span class="nav-text">PDF上传</span></span>
         </a>
       </li>
@@ -61,7 +57,7 @@
         <nz-breadcrumb-item>User</nz-breadcrumb-item>
         <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
       </nz-breadcrumb>
-      <div style="padding:24px; background: #fff; min-height: 360px;">
+      <div style="padding:0; background: #fff; min-height: 360px;">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
