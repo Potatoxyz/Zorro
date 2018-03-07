@@ -1,5 +1,7 @@
 <div id="wrapper">
 <nz-carousel [nzEffect]="'fade'">
-  <div nz-carousel-content *ngFor="let index of array"><h3>{{index}}</h3></div>
+  <div nz-carousel-content *ngFor="let img of Imgs;let i=index;">
+    <img src={{img}} alt="pic">
+  </div>
 </nz-carousel>
 </div>

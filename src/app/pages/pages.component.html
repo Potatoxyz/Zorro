@@ -54,8 +54,10 @@
     </nz-header>
     <nz-content style="margin:0 16px;">
       <nz-breadcrumb style="margin:12px 0;">
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+
+        <nz-breadcrumb-item *ngIf="links.parentLink!=''">{{links.parentLink|covertLink}}</nz-breadcrumb-item>
+        <nz-breadcrumb-item *ngIf="links.childLink!=''">{{links.childLink|covertLink}}</nz-breadcrumb-item>
+
       </nz-breadcrumb>
       <div style="padding:0; background: #fff; min-height: 360px;">
         <router-outlet></router-outlet>

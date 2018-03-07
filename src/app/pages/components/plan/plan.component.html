@@ -1,0 +1,11 @@
+<p class="mb10">
+  <i class="anticon anticon-delete action pointer" (click)="_delItem(item.id)"></i>
+  <i class="anticon anticon-edit action pointer" (click)="_editItem(item.id)"></i>
+  <i *ngIf="item.statu=='undone'" class="anticon anticon-minus-circle-o mr10 text-red"></i>
+  <i *ngIf="item.statu=='doing'" [ngStyle]="{'color':'#0265fd'}" class="anticon anticon-clock-circle-o mr10"></i>
+  <i *ngIf="item.statu=='finished'" class="anticon anticon-check-circle-o mr10 text-green"></i>
+  <span>{{item.text}}</span>
+  <span class="right">
+      <span>{{item.StartTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>~<span>{{item.EndTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>
+  </span>
+</p>

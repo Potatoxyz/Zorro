@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit {
   };
   cardsContent:Array<any>=[];
   show:boolean=true;
+  imgUrls:Array<any>=[];
   constructor(private indexService:IndexService,
               private router:Router) {
     this.cardsContent=indexService.cardsContent;
@@ -26,8 +27,9 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.Plans.push({complete:false,message:'hahaha'});
   }
-  navgateToPic(){
+  navgateToPic(urls:Array<any>){
     this.show=!this.show;
+    this.imgUrls=urls;
   }
 }
 export class PlansModel{

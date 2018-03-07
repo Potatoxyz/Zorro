@@ -1,7 +1,20 @@
 export class IndexService{
   cardsContent:Array<any>=[
-    {chapter:'第一章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
-    {chapter:'第二章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
+    {
+      chapter:'第一章',
+      des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+      urls:[
+        'assets/Chapter1/content1.PNG',
+        'assets/Chapter1/content2.PNG',
+        'assets/Chapter1/content3.PNG',
+      ]
+    },
+    {chapter:'第二章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+      urls:[
+        '/assets/Chapter2/content1.PNG',
+        '/assets/Chapter2/content2.PNG'
+      ]
+    },
     {chapter:'第三章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
     {chapter:'第四章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
     {chapter:'第五章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},

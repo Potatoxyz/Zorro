@@ -14,9 +14,13 @@ import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
 import {PagesRoutingGuard} from "./pages.routing.guard";
 import { DisplayPicComponent } from './components/display-pic/display-pic.component';
+import {ConverLinkDirective} from "./converLink.pipe";
+import { PlanComponent } from './components/plan/plan.component';
+import {ComponentsModule} from "./components/components.module";
 
 @NgModule({
   imports: [
+    ComponentsModule,
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -26,6 +30,6 @@ import { DisplayPicComponent } from './components/display-pic/display-pic.compon
     RouterModule.forChild(route),
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard],
-  declarations: [PagesComponent,IndexComponent, UploadComponent, LoginComponent, DisplayPicComponent]
+  declarations: [ConverLinkDirective,PagesComponent,IndexComponent, UploadComponent, LoginComponent ]
 })
 export class PagesModule { }

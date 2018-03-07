@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {JwtService} from "../../shared/jwt.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-pages',
@@ -9,22 +10,27 @@ import {JwtService} from "../../shared/jwt.service";
 })
 export class PagesComponent implements OnInit {
   isCollapsed = false;
-
-  constructor(private jwt:JwtService,
-              private Router:Router,
-              private activatedRoute:ActivatedRoute) {
+  links:{parentLink:string,childLink:string}={parentLink:'',childLink:''};
+  constructor(private jwt: JwtService,
+              private Router: Router,
+              private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    if(this.jwt.getToken()){
+    if (this.jwt.getToken()) {
       console.log('存在jwt，已登录');
     }
-    this.Router.events.subscribe(event=>{
-      console.log(event);
+    this.Router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        let l = event.url.split('/').slice(2);
+        //console.log(this.activatiedLink);
+        this.links={parentLink:l[0],childLink:l[1]};
+      }
     });
   }
-  quit(){
+
+  quit() {
     this.jwt.delToken();
     this.Router.navigateByUrl('/login');
     console.log(this.jwt.getToken());

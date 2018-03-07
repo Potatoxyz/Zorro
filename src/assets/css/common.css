@@ -1,0 +1,75 @@
+div.container{
+  padding: 15px;
+}
+.pointer{
+  cursor: pointer!important;
+}
+.not-allow{
+  cursor: not-allowed!important;
+}
+.text-red{
+  color:#f04134;
+}
+.border-red{
+  border-color:#f04134;
+}
+.bg-red{
+  background-color:#f04134;
+}
+
+.text-green{
+  color:#00a854;
+}
+.border-green{
+  border-color:#00a854;
+}
+.bg-green{
+  background-color:#00a854;
+}
+
+.right{
+   float: right!important;
+}
+.left{
+  float: left!important;
+}
+
+.mr5{
+  margin-right: 5px;
+}
+.mr10{
+  margin-right: 10px;
+}
+.mr15{
+  margin-right: 15px;
+}
+
+.ml5{
+  margin-left: 5px;
+}
+.ml10{
+  margin-left: 10px;
+}
+.ml15{
+  margin-left: 15px;
+}
+
+.mt5{
+  margin-top: 5px;
+}
+.mt10{
+  margin-top: 10px;
+}
+.mt15{
+  margin-top: 15px;
+}
+
+.mb5{
+  margin-bottom: 5px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
+.mb15{
+  margin-bottom: 15px;
+}

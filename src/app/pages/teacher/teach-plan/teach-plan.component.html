@@ -1,11 +1,5 @@
-<nz-timeline>
-  <nz-timeline-item>Create a services site 2015-09-01</nz-timeline-item>
-  <nz-timeline-item>Solve initial network problems 2015-09-01</nz-timeline-item>
-  <nz-timeline-item [nzColor]="'red'">
-    <ng-template #custom>
-      <i class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i>
-    </ng-template>
-    Technical testing 2015-09-01
-  </nz-timeline-item>
-  <nz-timeline-item>Network problems being solved 2015-09-01</nz-timeline-item>
-</nz-timeline>
+<div class="container">
+  <app-plan *ngFor="let item of plans" [item]="item"
+            (delItem)="_getPlanDel($event)"
+            (editItem)="_getPlanEdit($event)"></app-plan>
+</div>

@@ -1,0 +1,22 @@
+p{
+  font-size: 14px;
+  position: relative;
+  padding:0 40px 0 40px;
+  &:hover .action{
+    visibility: visible;
+  }
+}
+.action{
+  visibility: hidden;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top:50%;
+  margin-top:-7px;
+}
+.anticon-delete{
+  left: 0;
+}
+.anticon-edit{
+  left: 19px;
+}

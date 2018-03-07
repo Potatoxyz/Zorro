@@ -13,7 +13,7 @@
     <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
     <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
     <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <div class="card" [ngStyle]="gridStyle" *ngFor="let card of cardsContent" (click)="navgateToPic()">
+    <div class="card" [ngStyle]="gridStyle" *ngFor="let card of cardsContent;let i=index;" (click)="navgateToPic(card.urls)">
       <p>{{card.chapter}}</p>
       <p>{{card.des}}</p>
     </div>
@@ -21,6 +21,6 @@
 </nz-card>
 </div>
 <div id="img-wrapper" [@displayPic]="show?'show':'hide'" [ngStyle]="{'right':show?'-40px':'0'}">
-  <app-display-pic></app-display-pic>
+  <app-display-pic *ngIf="!show" [Imgs]="imgUrls"></app-display-pic>
 </div>
 </div>
