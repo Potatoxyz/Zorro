@@ -1,11 +1,29 @@
 <p class="mb10">
-  <i class="anticon anticon-delete action pointer" (click)="_delItem(item.id)"></i>
-  <i class="anticon anticon-edit action pointer" (click)="_editItem(item.id)"></i>
-  <i *ngIf="item.statu=='undone'" class="anticon anticon-minus-circle-o mr10 text-red"></i>
-  <i *ngIf="item.statu=='doing'" [ngStyle]="{'color':'#0265fd'}" class="anticon anticon-clock-circle-o mr10"></i>
-  <i *ngIf="item.statu=='finished'" class="anticon anticon-check-circle-o mr10 text-green"></i>
-  <span>{{item.text}}</span>
+  <i class="anticon anticon-delete action pointer" (click)="_delItem(_item.id)"></i>
+  <i class="anticon anticon-edit action pointer" (click)="_editItem(_item.id,modal)"></i>
+  <i *ngIf="_item.statu=='undone'" class="anticon anticon-minus-circle-o mr10 text-red"></i>
+  <i *ngIf="_item.statu=='doing'" [ngStyle]="{'color':'#0265fd'}" class="anticon anticon-clock-circle-o mr10"></i>
+  <i *ngIf="_item.statu=='finished'" class="anticon anticon-check-circle-o mr10 text-green"></i>
+  <span>{{_item.text}}</span>
   <span class="right">
-      <span>{{item.StartTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>~<span>{{item.EndTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>
+    <span>{{_item.StartTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>~<span>{{_item.EndTime|date:'yyyy/MM/dd HH:mm:ss'}}</span>
   </span>
 </p>
+<ng-template #modal>
+  <p style="padding-left: 0;margin-bottom: 5px;">内容：</p>
+  <textarea id="mytextarea" rows="5" name="text" [(ngModel)]="text" ></textarea>
+  <div>
+    <span>日期：</span>
+    <div style="margin:5px 0;">
+      <span>开始：</span>
+      <nz-datepicker [(ngModel)]="_start.startDate"  [nzPlaceHolder]="'开始日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+      <nz-timepicker [(ngModel)]="_start.startTime"  [nzFormat]="'HH:mm'" [nzPlaceHolder]="'开始时间'"></nz-timepicker>
+    </div>
+    <div style="margin:5px 0;">
+      <span>结束：</span>
+      <nz-datepicker [(ngModel)]="_end.endDate"  [nzPlaceHolder]="'结束日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+      <nz-timepicker [(ngModel)]="_end.endTime"  [nzFormat]="'HH:mm'" [nzPlaceHolder]="'结束时间'"></nz-timepicker>
+    </div>
+
+  </div>
+</ng-template>

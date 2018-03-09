@@ -7,6 +7,7 @@ import {NgZorroAntdModule} from "ng-zorro-antd";
 import {TeachPlanService} from "./teach-plan/teach-plan.service";
 import {CommonModule} from "@angular/common";
 import {ComponentsModule} from "../components/components.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [

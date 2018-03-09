@@ -1,5 +1,5 @@
 <div class="container">
-  <app-plan *ngFor="let item of plans" [item]="item"
+  <app-plan *ngFor="let item of plans" [_item]="item"
             (delItem)="_getPlanDel($event)"
             (editItem)="_getPlanEdit($event)"></app-plan>
 </div>
