@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-.ant-modal-body{
-  padding-top: 0!important;
+nz-timepicker /deep/ .ant-time-picker-input,nz-datepicker /deep/ .ant-calendar-picker-input{
+  color:black;
 }
-
+.myTextarea{
+  width: 100%;
+  padding:5px;
+  color:black;
+}

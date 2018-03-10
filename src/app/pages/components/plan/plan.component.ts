@@ -47,15 +47,6 @@ export class PlanComponent implements OnInit {
         this._item.EndTime=newEndDate;
         this._item.text=this.text;
       }
-
-      // this._item.StartTime=new Date();
-      // this._item.StartTime.setFullYear(this._start.startDate.getFullYear(),this._start.startDate.getMonth(),this._start.startDate.getDate());
-      // this._item.StartTime.setHours(this._start.startTime.getHours(),this._start.startTime.getMinutes());
-      //
-      // this._item.EndTime=new Date();
-      // this._item.EndTime.setFullYear(this._end.endDate.getFullYear(),this._end.endDate.getMonth(),this._end.endDate.getDate());
-      // this._item.EndTime.setHours(this._end.endTime.getHours(),this._end.endTime.getMinutes());
-
     };
     let onModalCancel=()=>{};
 
