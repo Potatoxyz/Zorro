@@ -9,8 +9,8 @@ import {planItemModel} from "../../components/plan/plan.component";
 })
 export class TeachPlanComponent implements OnInit,AfterViewInit {
   plans:Array<planItemModel>=[];
-  _start:{startTime:Date,startDate:Date};
-  _end:{endDate:Date,endTime:Date};
+  _start:{startTime:Date,startDate:Date}={startTime:null,startDate:null};
+  _end:{endDate:Date,endTime:Date}={endDate:null,endTime:null};
   text:string;
 
   isVisible:boolean=false;
