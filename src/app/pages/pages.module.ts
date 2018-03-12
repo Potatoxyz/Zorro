@@ -13,11 +13,11 @@ import { LoginComponent } from './login/login.component';
 import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
 import {PagesRoutingGuard} from "./pages.routing.guard";
-import { DisplayPicComponent } from './components/display-pic/display-pic.component';
 import {ConverLinkDirective} from "./converLink.pipe";
-import { PlanComponent } from './components/plan/plan.component';
 import {ComponentsModule} from "./components/components.module";
-
+import { LeaveMessageComponent } from './leave-message/leave-message.component';
+import {Ng2EmojiModule} from 'ng2-emoji';
+import {EmojiService} from "./emoji.service";
 @NgModule({
   imports: [
     ComponentsModule,
@@ -27,9 +27,10 @@ import {ComponentsModule} from "./components/components.module";
     HttpClientModule,
     ReactiveFormsModule,
     NgZorroAntdModule.forRoot(),
+    Ng2EmojiModule.forRoot(),
     RouterModule.forChild(route),
   ],
-  providers:[ApiService,JwtService,PagesRoutingGuard],
-  declarations: [ConverLinkDirective,PagesComponent,IndexComponent, UploadComponent, LoginComponent ]
+  providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService],
+  declarations: [ConverLinkDirective,PagesComponent,IndexComponent, UploadComponent, LoginComponent, LeaveMessageComponent ]
 })
 export class PagesModule { }

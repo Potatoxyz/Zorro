@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "assets/css/common.css"
+        "assets/css/common.css",
+        "../node_modules/ng2-emoji/css/ng2-emoji.css"
       ],
       "scripts": ["../node_modules/jquery/dist/jquery.js"],
       "environmentSource": "environments/environment.ts",

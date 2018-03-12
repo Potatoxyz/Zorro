@@ -1,6 +1,9 @@
 div.container{
   padding: 15px;
 }
+.bold{
+  font-weight: bold!important;
+}
 .undeline{
   text-decoration: underline!important;
 }

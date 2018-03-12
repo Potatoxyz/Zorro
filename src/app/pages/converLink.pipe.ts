@@ -7,6 +7,7 @@ export class ConverLinkDirective implements PipeTransform{
     {linkName:'upload',text:'上传'},
     {linkName:'teacher',text:'教师'},
     {linkName:'teacher-plan',text:'教学计划'},
+    {linkName:'leaveMessage',text:'留言'},
   ];
   transform(value:any){
     console.log(value);

@@ -1,0 +1,99 @@
+div.tab-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  >div.tab-content{
+    width: 960px;
+    padding:15px 0;
+    border: 1px solid black;
+    .mes-item{
+      margin-bottom: 30px;
+      div.mes-header{
+        height: 40px;
+        display: flex;
+        .mes-title{
+          display: inline-block;
+          font-size: 16px;
+          padding:0 15px;
+          .time{
+            font-size: 0.7em;
+            color: #5b5b5b;
+          }
+        }
+        div.area-container{
+          width: 90%;
+          margin-left: 15px;
+          height: 160px;
+          border:1px solid rgb(169,169,169);
+          div.tools{
+            position: relative;
+            >span{
+              display: inline-block;
+              margin-right:10px;
+            }
+          }
+          div#message-container{
+            height: 120px;
+            padding: 10px;
+            padding-top:0;
+            &:focus{
+              outline:none;
+            }
+            nz-input{
+              padding:0;
+              /deep/ input{
+                border:none;
+                outline: none;
+              }
+            }
+          }
+          textarea{
+            width: 100%;
+            display: block;
+            height: 120px;
+            padding: 10px;
+            padding-top:0;
+            border:none;
+            border-radius: 5px;
+            &:focus{
+              outline:none;
+            }
+          }
+        }
+        nz-input{
+          display: inline-block;
+          line-height: 40px;
+          padding:0 15px;
+          /deep/ input{
+            height: 36px;
+            border-color: #b3b3b3;
+          }
+          /deep/  input::-webkit-input-placeholder{
+            color: #908e95;
+          }
+          /deep/  input::-moz-placeholder{
+            color:#908e95;
+          }
+        }
+      }
+      div.mes-content{
+        p{
+          padding-left: 55px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+div.pane{
+  position: absolute;
+  width: 400px;
+  height: 100px;
+  z-index: 1000;
+  background: #cddfe1;
+  border-radius: 5px;
+  .emoji-item{
+    display: inline-block;
+  }
+}
