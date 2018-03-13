@@ -2,7 +2,9 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {mesDataModel, MessagesService} from "./messages.service";
 import {EmojiService} from "../emoji.service";
 import {ValueModel} from "../../../shared/Model/valueModel";
-import {FromEventObservable} from "rxjs/observable/FromEventObservable";
+import {Observable} from "rxjs";
+
+
 
 @Component({
   selector: 'app-leave-message',
@@ -11,18 +13,6 @@ import {FromEventObservable} from "rxjs/observable/FromEventObservable";
   providers:[MessagesService]
 })
 export class LeaveMessageComponent implements OnInit,AfterViewInit {
-  tabs = [
-    {
-      active: true,
-      name  : 'Tab 1',
-      icon  : 'anticon anticon-apple'
-    },
-    {
-      active: false,
-      name  : 'Tab 2',
-      icon  : 'anticon anticon-android'
-    }
-  ];
   messages:Array<mesDataModel>=[];
   message:string='';
   allEmoji:Array<ValueModel>=[];
@@ -32,7 +22,9 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit() {
-
+    let p=$('#message-container').children('p:first');
+    this.activeLine=$(p);
+    this.bindPclick($(p));
   }
   openEmojiPane(){
     $('#emoji-pane').show();
@@ -45,17 +37,39 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     $('#emoji-pane').hide();
     $('.pane-container').remove();
      }
-  addEmoji(dom){
+  addEmoji(dom,emojiValue){
     let emojiDom=$(dom).html();
-    $('#message-container').append(emojiDom);
+    $(this.activeLine).append(emojiDom+"&nbsp;");
+    //$('#message-container')[0].focus();
+    $('#message-container').find('i').attr('contentEditable','false').css('verticalAlign','middle');
     this.closeEmojiPane();
   }
-  editMessage(target,dom){
-    FromEventObservable.create(target,'keypress').subscribe(e=>{
-      console.log(e);
+  editMessage(e){
+    if(!$(e.target).has('p').length){
+      $('#message-container').append('<p style="height: 30px;width: 100%;"></p>');
+    }
+  }
+  activeLine:any;
+  recordActiveLine(){
+    this.activeLine=$('#message-container').children('p:last');
+    $(this.activeLine).children('br').remove();
+    let p=$('#message-container').children('p');
+    $(p).each((index,el)=>{
+      this.bindPclick(el);
     });
-    // this.message+=dom.innerText;
-    // console.log(this.message)
+    //console.log(this.activeLine);n
+  }
+  bindPclick(target){
+    $(target).click(()=>{this.activeLine=target});
+  }
+  publishMessage(){
+    let mes='';
+    let p=$('#message-container').children('p');
+    $(p).each((index,el)=>{
+     let i=$(el).find('i');
+     let html:string=$(el).html();
+     console.log(html);
+    });
   }
   ngAfterViewInit(){
     $('#message').focus(()=>{$('#message').parents('.area-container').css('border-color','#72abff')})

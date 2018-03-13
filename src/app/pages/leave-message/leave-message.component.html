@@ -26,16 +26,18 @@
               <div class="tools">
                 <span class="tools-emoji" title="表情" [innerHtml]="':smile:'|emojis" (click)="openEmojiPane()"></span>
                 <div class="pane" id="emoji-pane" style="display: none;">
-                  <span class="emoji-item pointer" #emojiItem (click)="addEmoji(emojiItem)" *ngFor="let emoji of allEmoji" [title]="emoji.text" [innerHtml]="emoji.value|emojis"></span>
+                  <span class="emoji-item pointer" #emojiItem (click)="addEmoji(emojiItem,emoji.value)" *ngFor="let emoji of allEmoji" [title]="emoji.text" [innerHtml]="emoji.value|emojis"></span>
                 </div>
               </div>
-              <div id="message-container" #messageFiled (keypress)="editMessage($event.target,messageFiled)" [contentEditable]="'plaintext-only'"></div>
+              <div id="message-container" [contentEditable]="'true'" (keyup.enter)="recordActiveLine()" (input)="editMessage($event)">
+                <p class="text"></p>
+              </div>
               <!--<textarea id="message" cols="30" rows="10" [(ngModel)]="message"></textarea>-->
             </div>
           </div>
-          <div class="mes-content">
-            <!--<input type="text" class="addMessage" readonly placeholder="点击发表留言">-->
-          </div>
+        </div>
+        <div style="height: 28px;padding-right: 4%;">
+          <button nz-button [nzType]="'primary'" class="right" (click)="publishMessage()">发表</button>
         </div>
       </div>
     </div>
