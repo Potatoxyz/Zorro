@@ -1,45 +1,64 @@
-<!--<nz-tabset>-->
-  <!--<nz-tab *ngFor="let tab of tabs;let i=index">-->
-    <!--<ng-template #nzTabHeading>-->
-      <!--<i [ngClass]="tab.icon"></i>-->
-      <!--{{tab.name}}-->
-    <!--</ng-template>-->
-    <div class="tab-container">
-      <div class="tab-content">
-        <div class="mes-item" *ngFor="let item of messages">
-          <div class="mes-header">
-            <nz-avatar [nzText]="item.user" nzSize="large" [ngStyle]="{'background-color':item.color}"></nz-avatar>
-            <p class="mes-title">
-              <span class="user mr10 bold">{{item.user}}</span>
-              <span class="time">{{item.time|date:'yyyy/MM/dd HH:mm:ss'}}</span>
-            </p>
-          </div>
-          <div class="mes-content">
-            <p>{{item.message}}</p>
-          </div>
-        </div>
-        <div class="mes-item" style="height: 160px;">
-          <div class="mes-header">
-            <nz-avatar [nzText]="'User'" nzSize="large" [ngStyle]="{'background-color':'#8a8a15'}"></nz-avatar>
-            <!--<nz-input  [nzPlaceHolder]="'点击发表留言'"></nz-input>-->
-            <div class="area-container">
-              <div class="tools">
-                <span class="tools-emoji" title="表情" [innerHtml]="':smile:'|emojis" (click)="openEmojiPane()"></span>
-                <div class="pane" id="emoji-pane" style="display: none;">
-                  <span class="emoji-item pointer" #emojiItem (click)="addEmoji(emojiItem,emoji.value)" *ngFor="let emoji of allEmoji" [title]="emoji.text" [innerHtml]="emoji.value|emojis"></span>
-                </div>
-              </div>
-              <div id="message-container" [contentEditable]="'true'" (keyup.enter)="recordActiveLine()" (input)="editMessage($event)">
-                <p class="text"></p>
-              </div>
-              <!--<textarea id="message" cols="30" rows="10" [(ngModel)]="message"></textarea>-->
+<div class="searchBar mb15">
+  <ul>
+    <li>
+      <nz-datepicker  [(ngModel)]="searchDate.starDate"   [nzPlaceHolder]="'选择日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+    </li>
+    <li>
+      <nz-timepicker [(ngModel)]="searchDate.startTime" [nzFormat]="'HH:mm'"></nz-timepicker>
+    </li>
+    <li>
+      <nz-input [(ngModel)]="searchText" [nzPlaceHolder]="'发表人'" id="searchText"></nz-input>
+      <div class="searchResult">
+        <ng-template #searchResult>
+          <ul>
+            <li *ngFor="let item of results">{{item}}</li>
+          </ul>
+        </ng-template>
+      </div>
+    </li>
+    <li>
+      <button class="customBtn btn-green">搜索</button>
+    </li>
+  </ul>
+</div>
+<div class="tab-container">
+  <div class="tab-content">
+    <div class="mes-item" *ngFor="let item of messagesData">
+      <div class="mes-header">
+        <nz-avatar [nzText]="item.user" nzSize="large" [ngStyle]="{'background-color':item.color}"></nz-avatar>
+        <p class="mes-title">
+          <span class="user bold">{{item.user}}</span>
+          <span class="time">{{item.time|date:'yyyy/MM/dd HH:mm:ss'}}</span>
+        </p>
+      </div>
+      <div class="mes-content">
+        <p *ngFor="let mes of item.messages" [innerHtml]="mes|emojis"></p>
+      </div>
+    </div>
+    <div class="mes-item" style="height: 160px;">
+      <div class="mes-header">
+        <nz-avatar [nzText]="'User'" nzSize="large" [ngStyle]="{'background-color':'#8a8a15'}"></nz-avatar>
+        <!--<nz-input  [nzPlaceHolder]="'点击发表留言'"></nz-input>-->
+        <div class="area-container">
+          <div class="tools">
+            <span class="tools-emoji" title="表情" [innerHtml]="':smile:'|emojis" (click)="openEmojiPane()"></span>
+            <div class="pane" id="emoji-pane" style="display: none;">
+              <span class="emoji-item pointer" #emojiItem (click)="addEmoji(emojiItem,emoji.value)"
+                    *ngFor="let emoji of allEmoji" [title]="emoji.text" [innerHtml]="emoji.value|emojis"></span>
             </div>
           </div>
-        </div>
-        <div style="height: 28px;padding-right: 4%;">
-          <button nz-button [nzType]="'primary'" class="right" (click)="publishMessage()">发表</button>
+          <div id="message-container" [contentEditable]="'true'" (keyup.enter)="recordActiveLine()"
+               (input)="editMessage($event)">
+            <p class="text"></p>
+          </div>
+          <!--<textarea id="message" cols="30" rows="10" [(ngModel)]="message"></textarea>-->
         </div>
       </div>
     </div>
-  <!--</nz-tab>-->
-<!--</nz-tabset>-->
+    <div style="height: 28px;padding-right: 4%;">
+      <button nz-button [nzType]="'primary'" [nzLoading]="isloading" class="right" (click)="publishMessage()">发表
+      </button>
+    </div>
+  </div>
+</div>
+

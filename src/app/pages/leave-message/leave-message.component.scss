@@ -1,3 +1,13 @@
+div.searchBar{
+  display: flex;
+  justify-content: center;
+  ul{
+    width: 960px;
+    li{
+      display: inline-block;
+    }
+  }
+}
 div.tab-container{
   width: 100%;
   display: flex;
@@ -18,12 +28,17 @@ div.tab-container{
             font-size: 0.7em;
             color: #5b5b5b;
           }
+          .user{
+            display: inline-block;
+            width: 60px;
+          }
         }
         div.area-container{
           width: 90%;
           margin-left: 15px;
           height: 160px;
           border:1px solid rgb(169,169,169);
+          border-radius: 5px;
           div.tools{
             position: relative;
             >span{

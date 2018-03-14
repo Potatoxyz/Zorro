@@ -1,13 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-nz-timepicker /deep/ .ant-time-picker-input,nz-datepicker /deep/ .ant-calendar-picker-input{
-  color:black;
+nz-timepicker /deep/ .ant-time-picker-input, nz-datepicker /deep/ .ant-calendar-picker-input {
+  color: black;
 }
-.myTextarea{
+
+.myTextarea {
   width: 100%;
-  padding:5px;
-  color:black;
+  padding: 5px;
+  color: black;
 }
-.emoji{
-  display:inline-block;
-  transform:scale(0.6);
+
+.emoji {
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(0.6);
+}
+
+input[placeholder]::-webkit-input-placeholder {
+  color: rgb(141, 141, 141);
+}
+
+input[placeholder]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: rgb(141, 141, 141);
+}
+
+input[placeholder]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(141, 141, 141);
+}
+
+.customBtn {
+  color: white;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.btn-green{
+  background: #7eb178;
+  &:hover{
+    background: #8fc488;
+  }
 }

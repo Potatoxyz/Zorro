@@ -13,11 +13,20 @@ import {Observable} from "rxjs";
   providers:[MessagesService]
 })
 export class LeaveMessageComponent implements OnInit,AfterViewInit {
-  messages:Array<mesDataModel>=[];
-  message:string='';
+  messagesData:Array<mesDataModel>=[];
   allEmoji:Array<ValueModel>=[];
+  isloading:boolean=false;
+
+  searchDate:{starDate:Date,startTime:Date}={starDate:null,startTime:null};
+  searchText:string='';
+  results:Array<any>=[];
+  users:Array<any>=[];
+
   constructor(private messagesService:MessagesService,private emojiService:EmojiService) {
-    this.messages=messagesService.messagesData;
+    this.messagesData=messagesService.messagesData;
+    this.messagesData.forEach(val=>{
+      this.users.push(val.user.toLowerCase());
+    });
     this.allEmoji=emojiService.emojis;
   }
 
@@ -25,6 +34,17 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     let p=$('#message-container').children('p:first');
     this.activeLine=$(p);
     this.bindPclick($(p));
+    Observable.fromEvent($('#searchText')[0],'input').debounceTime(1000).filter(v=>
+     this.searchText.length>=3
+    ).subscribe(e=>{
+      this.results=[];
+      this.users.forEach(val=>{
+        if(val.indexOf(this.searchText)!=-1){
+
+        }
+      })
+      //console.log(this.searchText);
+    });
   }
   openEmojiPane(){
     $('#emoji-pane').show();
@@ -41,7 +61,7 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     let emojiDom=$(dom).html();
     $(this.activeLine).append(emojiDom+"&nbsp;");
     //$('#message-container')[0].focus();
-    $('#message-container').find('i').attr('contentEditable','false').css('verticalAlign','middle');
+    $('#message-container').find('i:last').attr({'contentEditable':'false','title':emojiValue}).css('verticalAlign','middle');
     this.closeEmojiPane();
   }
   editMessage(e){
@@ -57,19 +77,33 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     $(p).each((index,el)=>{
       this.bindPclick(el);
     });
-    //console.log(this.activeLine);n
+    //console.log(this.activeLine);
   }
   bindPclick(target){
     $(target).click(()=>{this.activeLine=target});
   }
   publishMessage(){
-    let mes='';
+    let mes:Array<any>=[];
     let p=$('#message-container').children('p');
     $(p).each((index,el)=>{
      let i=$(el).find('i');
-     let html:string=$(el).html();
-     console.log(html);
+     let tempEl=$(el).clone();
+     let temphtml=$(tempEl).html();
+     let newstr=temphtml;
+     $(i).each((index1,el1)=>{
+       newstr=newstr.replace(el1.outerHTML,$(el1).attr('title'));
+     });
+      if(newstr){mes.push(newstr);}
+      else{mes.push(temphtml);}
     });
+    this.isloading=true;
+    setTimeout(()=>{
+      this.messagesData.push({user:'DevUser',color:'black',messages:mes,time:new Date()});
+      this.isloading=false;
+      $('#message-container').text('');
+      $('#message-container').append('<p style="height: 30px;width: 100%;"></p>');
+      this.recordActiveLine();
+    },3000)
   }
   ngAfterViewInit(){
     $('#message').focus(()=>{$('#message').parents('.area-container').css('border-color','#72abff')})

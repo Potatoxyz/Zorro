@@ -4,6 +4,7 @@ import {PlanComponent} from "./plan/plan.component";
 import {DisplayPicComponent} from "./display-pic/display-pic.component";
 import {NgZorroAntdModule} from "ng-zorro-antd";
 import {FormsModule} from "@angular/forms";
+import { AlertMessageComponent } from './alert-message/alert-message.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     NgZorroAntdModule.forRoot(),
   ],
-  declarations: [PlanComponent,DisplayPicComponent],
-  exports:[PlanComponent,DisplayPicComponent]
+  declarations: [PlanComponent,DisplayPicComponent, AlertMessageComponent],
+  exports:[PlanComponent,DisplayPicComponent,AlertMessageComponent]
 })
 export class ComponentsModule { }

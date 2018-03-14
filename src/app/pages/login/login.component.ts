@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {JwtService} from "../../../shared/jwt.service";
 import {Router} from "@angular/router";
+import {AlertMessageComponent} from "../components/alert-message/alert-message.component";
+import {NzMessageService} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss'],
   providers:[LoginService]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends AlertMessageComponent implements OnInit {
   validateForm: FormGroup;
+  loading:boolean=false;
   constructor(private fb: FormBuilder,
               private loginService:LoginService,
               private jwt:JwtService,
-              private Router:Router
-  ) { }
+              private Router:Router,
+              messageService:NzMessageService
+  ) {super(messageService)}
 
   ngOnInit() {
     if(this.jwt.getToken()){
@@ -40,6 +44,10 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.Router.navigateByUrl('/pages/index');
         this.jwt.saveToken(data.result);
+        this.loading=false;
+      },err=>{
+        this.loading=false;
+        this.handError(err);
       });
    }
   }
