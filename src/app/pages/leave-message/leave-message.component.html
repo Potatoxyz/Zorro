@@ -8,12 +8,10 @@
     </li>
     <li>
       <nz-input [(ngModel)]="searchText" [nzPlaceHolder]="'发表人'" id="searchText"></nz-input>
-      <div class="searchResult">
-        <ng-template #searchResult>
+      <div class="searchResult" *ngIf="usersResults.length>0">
           <ul>
-            <li *ngFor="let item of results">{{item}}</li>
+            <li *ngFor="let item of usersResults">{{item}}</li>
           </ul>
-        </ng-template>
       </div>
     </li>
     <li>
@@ -37,7 +35,7 @@
     </div>
     <div class="mes-item" style="height: 160px;">
       <div class="mes-header">
-        <nz-avatar [nzText]="'User'" nzSize="large" [ngStyle]="{'background-color':'#8a8a15'}"></nz-avatar>
+        <nz-avatar [nzText]="'DevUser'" nzSize="large" [ngStyle]="{'background-color':'black'}"></nz-avatar>
         <!--<nz-input  [nzPlaceHolder]="'点击发表留言'"></nz-input>-->
         <div class="area-container">
           <div class="tools">

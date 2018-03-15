@@ -21,11 +21,12 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
   searchText:string='';
   results:Array<any>=[];
   users:Array<any>=[];
+  usersResults:Array<any>=[];
 
   constructor(private messagesService:MessagesService,private emojiService:EmojiService) {
     this.messagesData=messagesService.messagesData;
     this.messagesData.forEach(val=>{
-      this.users.push(val.user.toLowerCase());
+        this.users.push(val.user.toLowerCase());
     });
     this.allEmoji=emojiService.emojis;
   }
@@ -40,10 +41,17 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
       this.results=[];
       this.users.forEach(val=>{
         if(val.indexOf(this.searchText)!=-1){
-
+          //console.log(val);
+          this.results.push(val);
         }
-      })
-      //console.log(this.searchText);
+      });
+      this.results.forEach((val,index)=>{
+        let e=this.results.indexOf(val,index+1);
+        if(e==-1){
+          this.usersResults.push(val);
+        }
+      });
+      console.log(this.usersResults);
     });
   }
   openEmojiPane(){
@@ -103,7 +111,7 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
       $('#message-container').text('');
       $('#message-container').append('<p style="height: 30px;width: 100%;"></p>');
       this.recordActiveLine();
-    },3000)
+    },1500)
   }
   ngAfterViewInit(){
     $('#message').focus(()=>{$('#message').parents('.area-container').css('border-color','#72abff')})
