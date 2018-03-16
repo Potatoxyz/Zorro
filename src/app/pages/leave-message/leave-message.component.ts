@@ -3,9 +3,11 @@ import {mesDataModel, MessagesService} from "./messages.service";
 import {EmojiService} from "../emoji.service";
 import {ValueModel} from "../../../shared/Model/valueModel";
 import {Observable} from "rxjs";
-
-
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/distinct';
+import {NgbTypeaheadSelectItemEvent} from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: 'app-leave-message',
   templateUrl: './leave-message.component.html',
@@ -17,17 +19,27 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
   allEmoji:Array<ValueModel>=[];
   isloading:boolean=false;
 
-  searchDate:{starDate:Date,startTime:Date}={starDate:null,startTime:null};
+  searchDate:{starDate:Date,endDate:Date}={starDate:null,endDate:null};
   searchText:string='';
-  results:Array<any>=[];
   users:Array<any>=[];
-  usersResults:Array<any>=[];
-
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(
+        term=>{
+          if(term.length < 2 ){return [];}
+          else{
+            let result=this.users.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).splice(0,10);
+            let r:Array<any>=[];
+            Observable.from(result).distinct().subscribe(re=>{r.push(re)});
+            return r;
+          }
+        }
+      );
   constructor(private messagesService:MessagesService,private emojiService:EmojiService) {
     this.messagesData=messagesService.messagesData;
-    this.messagesData.forEach(val=>{
-        this.users.push(val.user.toLowerCase());
-    });
+    this.messagesData.forEach(val=>{this.users.push(val.user)});
     this.allEmoji=emojiService.emojis;
   }
 
@@ -35,24 +47,20 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     let p=$('#message-container').children('p:first');
     this.activeLine=$(p);
     this.bindPclick($(p));
-    Observable.fromEvent($('#searchText')[0],'input').debounceTime(1000).filter(v=>
-     this.searchText.length>=3
-    ).subscribe(e=>{
-      this.results=[];
-      this.users.forEach(val=>{
-        if(val.indexOf(this.searchText)!=-1){
-          //console.log(val);
-          this.results.push(val);
-        }
-      });
-      this.results.forEach((val,index)=>{
-        let e=this.results.indexOf(val,index+1);
-        if(e==-1){
-          this.usersResults.push(val);
-        }
-      });
-      console.log(this.usersResults);
-    });
+  }
+  selectUser(event:NgbTypeaheadSelectItemEvent){
+    console.log(event.item);
+    this.messagesData=this.messagesService.messagesData.filter(val=>val.user.indexOf(event.item)!=-1);
+  }
+  inputSelectAll(){
+    $('#manSearch').select();
+  }
+  doSearch(){
+
+  }
+  reset(){
+    this.messagesData=this.messagesService.messagesData;
+    this.searchText='';
   }
   openEmojiPane(){
     $('#emoji-pane').show();
@@ -85,7 +93,6 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     $(p).each((index,el)=>{
       this.bindPclick(el);
     });
-    //console.log(this.activeLine);
   }
   bindPclick(target){
     $(target).click(()=>{this.activeLine=target});

@@ -18,6 +18,7 @@ import {ComponentsModule} from "./components/components.module";
 import { LeaveMessageComponent } from './leave-message/leave-message.component';
 import {Ng2EmojiModule} from 'ng2-emoji';
 import {EmojiService} from "./emoji.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   imports: [
     ComponentsModule,
@@ -28,6 +29,7 @@ import {EmojiService} from "./emoji.service";
     ReactiveFormsModule,
     NgZorroAntdModule.forRoot(),
     Ng2EmojiModule.forRoot(),
+    NgbModule.forRoot(),
     RouterModule.forChild(route),
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService],

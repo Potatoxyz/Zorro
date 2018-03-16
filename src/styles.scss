@@ -43,3 +43,9 @@ input[placeholder]:-ms-input-placeholder { /* Internet Explorer 10-11 */
     background: #8fc488;
   }
 }
+.btn-red{
+  background: #dc3545;
+  &:hover{
+    background: #ff354b;
+  }
+}

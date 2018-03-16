@@ -1,21 +1,21 @@
-<div class="searchBar mb15">
+<div class="searchBar">
+  <ul class="mb10">
+    <li>
+      <nz-datepicker  [(ngModel)]="searchDate.starDate"   [nzPlaceHolder]="'选择开始日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+    </li>
+    <li>
+      <nz-datepicker  [(ngModel)]="searchDate.endDate"   [nzPlaceHolder]="'选择结束日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+    </li>
+    <li>
+      <button class="customBtn btn-green" (click)="doSearch()">搜索</button>
+    </li>
+  </ul>
   <ul>
     <li>
-      <nz-datepicker  [(ngModel)]="searchDate.starDate"   [nzPlaceHolder]="'选择日期'" [nzFormat]="'YYYY/MM/DD'"></nz-datepicker>
+      <input  nz-input type="text" [style.width]="'310px'" [(ngModel)]="searchText" [placeholder]="'发表人'" id="manSearch" (focus)="inputSelectAll()" (selectItem)="selectUser($event)" [ngbTypeahead]="search"/>
     </li>
     <li>
-      <nz-timepicker [(ngModel)]="searchDate.startTime" [nzFormat]="'HH:mm'"></nz-timepicker>
-    </li>
-    <li>
-      <nz-input [(ngModel)]="searchText" [nzPlaceHolder]="'发表人'" id="searchText"></nz-input>
-      <div class="searchResult" *ngIf="usersResults.length>0">
-          <ul>
-            <li *ngFor="let item of usersResults">{{item}}</li>
-          </ul>
-      </div>
-    </li>
-    <li>
-      <button class="customBtn btn-green">搜索</button>
+      <button class="customBtn btn-red" (click)="reset()">重置</button>
     </li>
   </ul>
 </div>
