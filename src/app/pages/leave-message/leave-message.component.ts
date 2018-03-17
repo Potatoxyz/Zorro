@@ -56,11 +56,16 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     $('#manSearch').select();
   }
   doSearch(){
+    this.messagesService.messagesData.filter(v=>{
+      let start=this.searchDate.starDate.getTime();
+      let end=this.searchDate.endDate.getTime();
 
+    });
   }
   reset(){
     this.messagesData=this.messagesService.messagesData;
     this.searchText='';
+    this.searchDate={starDate:null,endDate:null};
   }
   openEmojiPane(){
     $('#emoji-pane').show();

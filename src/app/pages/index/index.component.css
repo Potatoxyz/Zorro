@@ -14,7 +14,7 @@
 :host{
   position: relative;
 }
-.container{
+.mycontainer{
   width: 200%;
   /*overflow: hidden;*/
   position: relative;
