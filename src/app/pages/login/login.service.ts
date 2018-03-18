@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 @Injectable()
 export class LoginService{
-  url='http://localhost:3000/server/login';
+  url='http://localhost/server/login';
   constructor(private api:ApiService){
   }
   _DoLogin(body:any):Observable<any>{
