@@ -56,11 +56,18 @@ export class LeaveMessageComponent implements OnInit,AfterViewInit {
     $('#manSearch').select();
   }
   doSearch(){
-    this.messagesService.messagesData.filter(v=>{
-      let start=this.searchDate.starDate.getTime();
-      let end=this.searchDate.endDate.getTime();
-
+    if(this.searchDate.starDate){
+      var start=this.searchDate.starDate.getTime();
+    }
+    if(this.searchDate.endDate){
+      var end=this.searchDate.endDate.getTime();
+    }
+    this.messagesData=this.messagesService.messagesData.filter(v=>{
+      if(start&&!end){return v.time.getTime()>=start}
+      else if(end&&!start){return v.time.getTime()<=end}
+      else{return (v.time.getTime()>=start)&&(v.time.getTime()<=end)}
     });
+    console.log(this.messagesData);
   }
   reset(){
     this.messagesData=this.messagesService.messagesData;
