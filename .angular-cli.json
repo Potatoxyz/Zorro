@@ -22,7 +22,8 @@
         "styles.scss",
         "assets/css/common.css",
         "../node_modules/ng2-emoji/css/ng2-emoji.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": ["../node_modules/jquery/dist/jquery.js"],
       "environmentSource": "environments/environment.ts",

@@ -3,6 +3,7 @@ import {NzMessageService, UploadFile} from "ng-zorro-antd";
 import {Subscription} from "rxjs/Subscription";
 import {JwtService} from "../../../shared/jwt.service";
 import {UploadService} from "./upload.service";
+import {Environment} from "../../../shared/environment";
 
 @Component({
   selector: 'app-upload',
@@ -11,14 +12,8 @@ import {UploadService} from "./upload.service";
   providers:[UploadService]
 })
 export class UploadComponent implements OnInit {
-  fileList = [
-    //{
-    // uid: -1,
-    // name: 'xxx.png',
-    // status: 'done',
-    // url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //}
-  ];
+  url:string;
+  fileList = [];
   previewImage = '';
   previewVisible = false;
   _options = null;
@@ -27,7 +22,9 @@ export class UploadComponent implements OnInit {
   selectedChapter:string;
   Header={};
   constructor(private msg: NzMessageService,public jwt:JwtService,
-              private uploadService:UploadService) {
+              private uploadService:UploadService,
+              private ev:Environment) {
+    this.url=ev.uploadPDF;
     this.init_options=uploadService.init_options;
     this._options = this.init_options;
     this.Header={'Authorization':jwt.getToken()};

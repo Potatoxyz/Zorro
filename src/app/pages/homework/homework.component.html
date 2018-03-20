@@ -1,0 +1,41 @@
+<div class="mycontainer">
+  <p class="mb10 pointer">
+    <i class="anticon anticon-plus-circle-o"></i>
+    <span class="undeline" style="color:#0390c8;" (click)="openAddHomeworkModal()">添加新作业</span>
+  </p>
+</div>
+
+<nz-collapseset [nzBordered]="false">
+  <nz-collapse *ngFor="let panel of panels"   [nzActive]="panel.active"
+               [ngStyle]="panel.customStyle">
+    <p collapse-title class="custom-title">
+      {{panel.name}}
+      <span class="ml15">{{panel.time|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+      <span class="icon-wrap" (click)="DoEditHomeWork($event,panel)"><i class="fa fa-edit"></i></span>
+    </p>
+    <p style="margin-left: 15px;">{{panel.content}}</p>
+  </nz-collapse>
+</nz-collapseset>
+<nz-modal [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="isVisible=false">
+  <ng-template #modalTitle>{{isEditHomework?EditHomeworkItem?.name:'添加新作业'}}</ng-template>
+  <ng-template #modalContent>
+    <textarea autofocus name="" [(ngModel)]="homeworkContent" class="form-control mb10" rows="10" style="overflow-y: auto;"></textarea>
+    <p><span>上传附件：</span>
+      <nz-upload
+        nzAction={{url}}
+        [nzFileList]="fileList">
+        <button nz-button>
+          <i class="anticon anticon-upload"></i><span>Upload</span>
+        </button>
+      </nz-upload>
+    </p>
+  </ng-template>
+  <ng-template #modalFooter>
+    <button nz-button [nzType]="'default'" (click)="isVisible=false">
+      取消
+    </button>
+    <button nz-button [nzType]="'primary'" (click)="confirmModal(isEditHomework,EditHomeworkItem?.id)" [nzLoading]="isConfirmLoading">
+      提 交
+    </button>
+  </ng-template>
+</nz-modal>
