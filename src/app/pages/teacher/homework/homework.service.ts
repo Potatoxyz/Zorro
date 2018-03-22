@@ -9,13 +9,8 @@ export class HomeworkService{
       disabled: false,
       name: '作业一',
       time:new Date(2018,2,20,17,19,0),
-      customStyle: {
-        'background': '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        'border': '0px'
-      },
-      content:'作业一的内容'
+      content:'作业一的内容',
+      attachment:'这是作业一的附件'
     },
     {
       id:2,
@@ -23,13 +18,8 @@ export class HomeworkService{
       disabled: true,
       name: '作业二',
       time:new Date(2018,2,21,17,19,0),
-      customStyle: {
-        'background': '#f7f7f7',
-        'border-radius': '4px',
-        'margin-bottom': '24px',
-        'border': '0px'
-      },
-      content:'作业二的内容'
+      content:'作业二的内容',
+      attachment:'这是作业二的附件'
     }
   ];
   fileList = [{

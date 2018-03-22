@@ -4,9 +4,11 @@ div.searchBar{
   flex-wrap: wrap;
   ul{
     width: 960px;
+    font-size: 0;
     li{
       display: inline-block;
       position: relative;
+      font-size:1rem;
     }
   }
 }

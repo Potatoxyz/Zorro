@@ -1,0 +1,32 @@
+.icon-wrap{
+  width: 20px;
+  height: 20px;
+  padding:3px;
+  line-height: normal;
+  color:black;
+  text-align: center;
+  border-radius: 4px;
+  margin-left: 15px;
+  border:1px solid #9c9c9c;
+}
+.content p{
+  margin-left:15px;
+}
+:host ::ng-deep nz-collapse .ant-collapse-content .ant-collapse-content-box{
+  background: #e9e8df;
+}
+:host nz-upload ::ng-deep .ant-upload-list-item-info{
+  padding-left: 25px;
+}
+:host nz-upload ::ng-deep .ant-upload-list-item .anticon-cross{
+  position: absolute;
+  left: 0;
+  right: auto;
+  border:1px solid grey;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 18px;
+}

@@ -8,6 +8,7 @@ import {TeachPlanService} from "./teach-plan/teach-plan.service";
 import {CommonModule} from "@angular/common";
 import {ComponentsModule} from "../components/components.module";
 import {FormsModule} from "@angular/forms";
+import {HomeworkComponent} from "./homework/homework.component";
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import {FormsModule} from "@angular/forms";
     RouterModule.forChild(route),
   ],
   providers:[TeachPlanService],
-  declarations: [TeacherComponent, TeachPlanComponent]
+  declarations: [TeacherComponent, TeachPlanComponent,HomeworkComponent]
 })
 export class TeacherModule { }

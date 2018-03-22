@@ -1,0 +1,23 @@
+<nz-collapseset [nzBordered]="false">
+  <nz-collapse *ngFor="let panel of panels"   [nzActive]="panel.active"
+               [ngStyle]="customStyle">
+    <p collapse-title class="custom-title">
+      {{panel.name}}
+      <span class="ml15">{{panel.time|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+    </p>
+    <div class="content">
+      <p class="mb15">{{panel.content}}</p>
+      <p class="mb15"><a href="#" download="" style="color:#47a375">下载附件：{{panel.attachment}}</a></p>
+      <p>
+        <a href="javascript:;">上传作业：</a>
+        <nz-upload
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          [nzFileList]="fileList">
+          <button nz-button>
+            <i class="anticon anticon-upload"></i><span>Upload</span>
+          </button>
+        </nz-upload>
+      </p>
+    </div>
+  </nz-collapse>
+</nz-collapseset>

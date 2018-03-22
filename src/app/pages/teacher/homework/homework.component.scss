@@ -1,0 +1,37 @@
+.custom-title{
+  display: flex;
+  align-items: center;
+  .icon-wrap{
+    padding:3px;
+    background-color: #2280ab;
+    width: 20px;
+    height: 20px;
+    line-height: normal;
+    color:white;
+    text-align: center;
+    border-radius: 4px;
+    margin-left: 15px;
+  }
+}
+.content{
+  margin-left: 15px;
+}
+textarea{
+  font-size: 1em;
+}
+.homework-title{
+  display: flex;
+  align-content: center;
+  margin-bottom: 10px;
+  span{
+    width: 70px;
+    line-height: 38px;
+  }
+  input{
+    width: calc(100% - 50px);
+  }
+}
+:host ::ng-deep nz-collapse .ant-collapse-content .ant-collapse-content-box{
+  background: #e9e8df;
+}
+

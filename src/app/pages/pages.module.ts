@@ -19,8 +19,8 @@ import { LeaveMessageComponent } from './leave-message/leave-message.component';
 import {Ng2EmojiModule} from 'ng2-emoji';
 import {EmojiService} from "./emoji.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {HomeworkComponent} from "./homework/homework.component";
 import {Environment} from '../../shared/environment';
+import { HandinWorkComponent } from './handin-work/handin-work.component';
 
 @NgModule({
   imports: [
@@ -37,6 +37,6 @@ import {Environment} from '../../shared/environment';
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment],
   declarations: [ConverLinkDirective,PagesComponent,IndexComponent,
-    UploadComponent, LoginComponent, LeaveMessageComponent,HomeworkComponent ]
+    UploadComponent, LoginComponent, LeaveMessageComponent, HandinWorkComponent ]
 })
 export class PagesModule { }

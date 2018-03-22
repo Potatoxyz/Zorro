@@ -5,7 +5,8 @@ import {UploadComponent} from "./upload/upload.component";
 import {LoginComponent} from "./login/login.component";
 import {PagesRoutingGuard} from "./pages.routing.guard";
 import {LeaveMessageComponent} from "./leave-message/leave-message.component";
-import {HomeworkComponent} from "./homework/homework.component";
+import {HomeworkComponent} from "./teacher/homework/homework.component";
+import {HandinWorkComponent} from "./handin-work/handin-work.component";
 
 export let route:Routes=[
   {
@@ -17,7 +18,7 @@ export let route:Routes=[
     {path:'upload',component:UploadComponent},
     {path:'teacher',loadChildren:'./teacher/teacher.module#TeacherModule'},
     {path:'leaveMessage',component:LeaveMessageComponent},
-    {path:'homework',component:HomeworkComponent},
+    {path:'handinWork',component:HandinWorkComponent},
     ]
   },
   {

@@ -7,18 +7,25 @@
 
 <nz-collapseset [nzBordered]="false">
   <nz-collapse *ngFor="let panel of panels"   [nzActive]="panel.active"
-               [ngStyle]="panel.customStyle">
+               [ngStyle]="customStyle">
     <p collapse-title class="custom-title">
       {{panel.name}}
       <span class="ml15">{{panel.time|date:'yyyy-MM-dd HH:mm:ss'}}</span>
       <span class="icon-wrap" (click)="DoEditHomeWork($event,panel)"><i class="fa fa-edit"></i></span>
     </p>
-    <p style="margin-left: 15px;">{{panel.content}}</p>
+    <div class="content">
+    <p class="mb15">{{panel.content}}</p>
+    <p><a href="#" download="">附件：{{panel.attachment}}</a></p>
+    </div>
   </nz-collapse>
 </nz-collapseset>
 <nz-modal [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="isVisible=false">
   <ng-template #modalTitle>{{isEditHomework?EditHomeworkItem?.name:'添加新作业'}}</ng-template>
   <ng-template #modalContent>
+    <p *ngIf="!isEditHomework" class="homework-title">
+      <span>作业标题：</span>
+      <input style="display: inline-block" type="text" class="form-control" [(ngModel)]="homeworkName">
+    </p>
     <textarea autofocus name="" [(ngModel)]="homeworkContent" class="form-control mb10" rows="10" style="overflow-y: auto;"></textarea>
     <p><span>上传附件：</span>
       <nz-upload
