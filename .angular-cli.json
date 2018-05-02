@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "app/theme/theme.scss",
         "styles.scss",
         "assets/css/common.css",
         "../node_modules/ng2-emoji/css/ng2-emoji.css",

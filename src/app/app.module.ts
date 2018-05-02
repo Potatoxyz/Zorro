@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import {RouterModule} from "@angular/router";
 import {route} from "./app.routing";
 import {PagesModule} from "./pages/pages.module";
+import {ThemeModule} from './theme/theme.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PagesModule} from "./pages/pages.module";
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(route),
-    NgZorroAntdModule.forRoot()
+    NgZorroAntdModule.forRoot(),
+    ThemeModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
