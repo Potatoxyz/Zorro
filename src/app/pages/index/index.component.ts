@@ -6,15 +6,16 @@ import {DisplayPic} from "./display-pic.animation";
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  styleUrls: ['./index.component.scss'],
   providers:[IndexService],
   animations:[DisplayPic()]
 })
 export class IndexComponent implements OnInit {
   Plans:Array<PlansModel>=[];
   gridStyle = {
-    width: '350px',
+    width: '30%',
     textAlign: 'center',
+    minWidth:'200px'
   };
   cardsContent:Array<any>=[];
   show:boolean=true;

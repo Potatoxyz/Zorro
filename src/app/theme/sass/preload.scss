@@ -19,7 +19,7 @@
   z-index: 9999;
   .box{
     position: absolute;
-    top:40%;
+    top:30%;
     left: 50%;
     margin-left: -200px;
     height: 200px;
@@ -70,14 +70,5 @@
       -webkit-animation: loader2 1.5s linear infinite;
       animation: loader2 1.5s linear infinite;
     }
-  }
-  h1{
-    position: absolute;
-    width: auto;
-    left:50%;
-    top:35%;
-    transform:translateX(-50%);
-    font-size: 30px;
-    font-family: "KaiTi","FangSong";
   }
 }

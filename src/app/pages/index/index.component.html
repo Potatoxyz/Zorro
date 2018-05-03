@@ -4,18 +4,15 @@
   </div>
 <div class="link-wrapper" id="link-wrapper" [@displayPic]="show?'show':'hide'">
 <nz-card nzNoHovering>
-  <ng-template #title>卡片标题</ng-template>
+  <ng-template #title>章节内容</ng-template>
   <ng-template #body >
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <!--<div nz-card-grid [ngStyle]="gridStyle">卡片内容</div>-->
-    <div class="card" [ngStyle]="gridStyle" *ngFor="let card of cardsContent;let i=index;" (click)="navgateToPic(card.urls)">
-      <p>{{card.chapter}}</p>
-      <p>{{card.des}}</p>
+    <div class="card bordered-hover" [ngStyle]="gridStyle" *ngFor="let card of cardsContent;let i=index;" (click)="navgateToPic(card.urls)">
+      <span>
+        <span>
+          <p>{{card.chapter}}</p>
+          <p>{{card.des}}</p>
+        </span>
+      </span>
     </div>
   </ng-template>
 </nz-card>
