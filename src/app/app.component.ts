@@ -13,8 +13,8 @@ export class AppComponent{
 
   }
   public ngAfterViewInit(): void {
-    // BaThemePreloader.load().then((values) => {
-    //   this._spinner.hide(1000000);
-    // });
+    BaThemePreloader.load().then((values) => {
+      this._spinner.hide();
+    });
   }
 }
