@@ -1,23 +1,32 @@
 export class IndexService{
   cardsContent:Array<any>=[
     {
-      chapter:'第一章',
-      des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+      chapter:'第九章 地下水运动基本方程',
+      des:'水循环 能量转换 水均衡方程',
       urls:[
-        'assets/Chapter1/content1.PNG',
-        'assets/Chapter1/content2.PNG',
-        'assets/Chapter1/content3.PNG',
+        'assets/Chapter9/chapter9.jpg',
+        'assets/Chapter9/9-1.jpg',
+        'assets/Chapter9/9-1.1.jpg',
+        'assets/Chapter9/9-1.2.jpg',
+        'assets/Chapter9/9-1.3.jpg',
+        'assets/Chapter9/9-1.4.jpg',
       ]
     },
-    {chapter:'第二章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+    {chapter:'第十章 井流公式',des:'取水构筑物',
       urls:[
-        '/assets/Chapter2/content1.PNG',
-        '/assets/Chapter2/content2.PNG'
+        'assets/Chapter10/chapter10.jpg',
+        'assets/Chapter10/10-1.1.jpg',
+        'assets/Chapter10/10-1.2.jpg',
+        'assets/Chapter10/10-1.3.jpg',
+        'assets/Chapter10/10-1.4.jpg',
+        'assets/Chapter10/10-1.5.jpg',
       ]
     },
-    {chapter:'第三章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
-    {chapter:'第四章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
-    {chapter:'第五章',des:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'},
+    {chapter:'第十一章 井流公式',des:'地表径流',
+      urls:[
+        'assets/Chapter11/chapter11.jpg',
+      ]
+    },
   ];
   constructor(){}
 }
