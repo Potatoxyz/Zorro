@@ -21,6 +21,7 @@ import {EmojiService} from "./emoji.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {Environment} from '../../shared/environment';
 import { HandinWorkComponent } from './handin-work/handin-work.component';
+import {AnnouncementComponent} from './announcement/announcement.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,6 @@ import { HandinWorkComponent } from './handin-work/handin-work.component';
   ],
   providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment],
   declarations: [ConverLinkDirective,PagesComponent,IndexComponent,
-    UploadComponent, LoginComponent, LeaveMessageComponent, HandinWorkComponent ]
+    UploadComponent, LoginComponent, LeaveMessageComponent, HandinWorkComponent ,AnnouncementComponent]
 })
 export class PagesModule { }

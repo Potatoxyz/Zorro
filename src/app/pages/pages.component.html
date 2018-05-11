@@ -38,6 +38,11 @@
           <span><i class="anticon anticon-file"></i><span class="nav-text">提交作业</span></span>
         </a>
       </li>
+      <li nz-menu-item>
+        <a href="javascript:;" [routerLink]="'annoucement'">
+          <span><i class="anticon anticon-file"></i><span class="nav-text">公告列表</span></span>
+        </a>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -68,7 +73,7 @@
       </div>
     </nz-header>
     <nz-content style="margin:0 16px;">
-      <nz-breadcrumb style="margin:12px 0;">
+      <nz-breadcrumb style="margin:12px 0;min-height: 18px;">
 
         <nz-breadcrumb-item *ngIf="links.parentLink!=''">{{links.parentLink|covertLink}}</nz-breadcrumb-item>
         <nz-breadcrumb-item *ngIf="links.childLink!=''">{{links.childLink|covertLink}}</nz-breadcrumb-item>

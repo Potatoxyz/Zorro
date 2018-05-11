@@ -10,6 +10,7 @@ export class ConverLinkDirective implements PipeTransform{
     {linkName:'leaveMessage',text:'留言'},
     {linkName:'homework',text:'课后作业'},
     {linkName:'handinWork',text:'提交作业'},
+    {linkName:'annoucement',text:'公告'},
   ];
   transform(value:any){
     console.log(value);
