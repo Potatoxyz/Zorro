@@ -9,7 +9,7 @@
   <nz-collapse *ngFor="let panel of panels"   [nzActive]="panel.active"
                [ngStyle]="customStyle">
     <p collapse-title class="custom-title">
-      {{panel.name}}
+      <span>{{panel.name}}</span>
       <span class="ml15">{{panel.time|date:'yyyy-MM-dd HH:mm:ss'}}</span>
       <span class="icon-wrap" (click)="DoEditHomeWork($event,panel)"><i class="fa fa-edit"></i></span>
     </p>

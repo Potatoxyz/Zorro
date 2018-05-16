@@ -26,18 +26,18 @@ export class HomeworkService{
     uid: 1,
     name: 'xxx.png',
     status: 'done',
-    response: 'Server Error 500', // custom error message to show
-    url: 'http://www.baidu.com/xxx.png',
+    response: '服务端发生错误', // custom error message to show
+    url: 'http://www.baidu.com,'
   }, {
     uid: 2,
     name: 'yyy.png',
     status: 'done',
-    url: 'http://www.baidu.com/yyy.png',
+    url: 'http://www.baidu.com',
   }, {
     uid: 3,
     name: 'zzz.png',
     status: 'error',
-    response: 'Server Error 500', // custom error message to show
-    url: 'http://www.baidu.com/zzz.png',
+    response: '服务端发生错误', // custom error message to show
+    url: 'http://www.baidu.com',
   }];
 }

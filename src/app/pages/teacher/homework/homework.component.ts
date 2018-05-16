@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HomeworkService} from "./homework.service";
 import {Environment} from "../../../../shared/environment";
+import {NzModalService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-homework',
@@ -25,7 +26,8 @@ export class HomeworkComponent implements OnInit {
     'border': '0px'
   };
   constructor(private homeworkService:HomeworkService,
-              private ev:Environment) {
+              private ev:Environment,
+              private modalService: NzModalService) {
     this.panels=homeworkService.panels;
     this.fileList=homeworkService.fileList;
     this.url=ev.uploadHomework;
@@ -42,24 +44,29 @@ export class HomeworkComponent implements OnInit {
     this.homeworkName=item.name;
   }
   confirmModal(isEdit:boolean,id:any){
-    this.isVisible=false;
-    if(isEdit){
-      let index=this.homeworkService.panels.findIndex(v=>v.id==id);
-      this.homeworkService.panels[index].name=this.homeworkName;
-      this.homeworkService.panels[index].content=this.homeworkContent;
+    if(this.homeworkContent==""){
+      this.modalService.error({title: '错误', content: '作业描述不能为空！',zIndex:1001});
     }
     else{
-      this.homeworkService.panels.push(
-        {
-          id:3,
-          active: false,
-          disabled: true,
-          name: this.homeworkName,
-          time:new Date(2018,2,21,17,19,0),
-          content:this.homeworkContent,
-          attachment:`这是${this.isEditHomework}的附件`
-        }
-      );
+      this.isVisible=false;
+      if(isEdit){
+        let index=this.homeworkService.panels.findIndex(v=>v.id==id);
+        this.homeworkService.panels[index].name=this.homeworkName;
+        this.homeworkService.panels[index].content=this.homeworkContent;
+      }
+      else{
+        this.homeworkService.panels.push(
+          {
+            id:3,
+            active: false,
+            disabled: true,
+            name: this.homeworkName,
+            time:new Date(),
+            content:this.homeworkContent,
+            attachment:`这是${this.homeworkName}的附件`
+          }
+        );
+      }
     }
   }
   openAddHomeworkModal(){

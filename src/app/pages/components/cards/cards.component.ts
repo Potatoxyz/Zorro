@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-var cards=require('./cards');
+import {AfterViewChecked, AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -11,7 +10,33 @@ export class CardsComponent implements OnInit,AfterViewInit{
   ngOnInit(){
   }
   ngAfterViewInit(){
-    cards.commentCards($('#cards'));
+   this.cardsInit();
+  }
+  cardsInit(isNew:boolean=false){
+    var $this = $("#cards"), $cards = $('li.card'),
+    $current = $cards.filter('.card--current'), $next;
+    $cards.on('click',function(){
+      if ( !$current.is(this)) {
+        next(this);
+      }
+    });
+    var next=function (_this) {
+      $cards.removeClass('card--current card--out card--next');
+      $current.addClass('card--out');
+      $current = $(_this).addClass('card--current');
+      $next = $current.next();
+      $next = $next.length ? $next : $cards.first();
+      $next.addClass('card--next');
+    };
+    if(isNew){
+      $current = $cards.eq(-2);
+      next($cards.last());
+    }
+    if ( !$current.length ) {
+      $current = $cards.last();
+      next($cards.first());
+    }
+    $this.addClass('cards--active');
   }
 }
 export class CardsModel{

@@ -1,6 +1,9 @@
 .custom-title{
   display: flex;
   align-items: center;
+  span:first-of-type{
+    width: calc(100% - 160px);
+  }
   .icon-wrap{
     padding:3px;
     background-color: #2280ab;
