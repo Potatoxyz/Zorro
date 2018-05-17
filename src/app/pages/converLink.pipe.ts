@@ -13,11 +13,18 @@ export class ConverLinkDirective implements PipeTransform{
     {linkName:'annoucement',text:'公告'},
   ];
   transform(value:any){
-    console.log(value);
-    let r=this.links.find(val=>val.linkName==value);
-    if(r){
-      value=r.text;
+    if(value){
+      this.links.forEach(v=>{
+        let l=v.linkName;
+        if(value.indexOf(l)!=-1){
+          value=v.text;
+        }
+      });
     }
+    // let r=this.links.find(val=>val.linkName==value);
+    // if(r){
+    //   value=r.text;
+    // }
     return value;
   }
 }

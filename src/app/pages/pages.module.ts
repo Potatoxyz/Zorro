@@ -22,6 +22,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {Environment} from '../../shared/environment';
 import { HandinWorkComponent } from './handin-work/handin-work.component';
 import {AnnouncementComponent} from './announcement/announcement.component';
+import {AnnouncementService} from './announcement/announcement.service';
 
 @NgModule({
   imports: [
@@ -36,7 +37,7 @@ import {AnnouncementComponent} from './announcement/announcement.component';
     NgbModule.forRoot(),
     RouterModule.forChild(route),
   ],
-  providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment],
+  providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment,AnnouncementService],
   declarations: [ConverLinkDirective,PagesComponent,IndexComponent,
     UploadComponent, LoginComponent, LeaveMessageComponent, HandinWorkComponent ,AnnouncementComponent]
 })

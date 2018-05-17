@@ -49,3 +49,14 @@
   background: #eee;
   display: inline-block;
 }
+.cusPos{
+  left: -100px;
+  li{
+    width: 150px;
+    a{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

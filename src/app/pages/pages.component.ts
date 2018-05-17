@@ -2,18 +2,23 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {JwtService} from "../../shared/jwt.service";
 import {Observable} from "rxjs/Observable";
+import {AnnouncementService} from './announcement/announcement.service';
+import {CardsModel} from './components/cards/cards.component';
 
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.css']
+  styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
   isCollapsed = false;
   links:{parentLink:string,childLink:string}={parentLink:'',childLink:''};
+  newMes:Array<CardsModel>=[];
   constructor(private jwt: JwtService,
               private Router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private announcementService:AnnouncementService) {
+    this.newMes.push(this.announcementService.cardsContent[3])
 
   }
 
@@ -28,11 +33,20 @@ export class PagesComponent implements OnInit {
         this.links={parentLink:l[0],childLink:l[1]};
       }
     });
+    this.announcementService.getAnnounce().subscribe(d=>{
+      console.log(d);
+      this.newMes.push(d);
+    })
   }
 
   quit() {
     this.jwt.delToken();
     this.Router.navigateByUrl('/login');
     console.log(this.jwt.getToken());
+  }
+  delAnnouce(e,id){
+    e.preventDefault();
+    let index=this.newMes.findIndex(v=>v.id==id);
+    this.newMes.splice(index,1);
   }
 }

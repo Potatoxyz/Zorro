@@ -3,11 +3,11 @@ import {JwtService} from "../../../shared/jwt.service";
 import {Environment} from "../../../shared/environment";
 import {AnnouncementService} from './announcement.service';
 import {CardsComponent} from '../components/cards/cards.component';
+import {ActivatedRoute, Route, Router, Routes} from '@angular/router';
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
   styleUrls: ['./announcement.component.scss'],
-  providers:[AnnouncementService]
 })
 export class AnnouncementComponent implements OnInit {
   Data;
@@ -17,21 +17,33 @@ export class AnnouncementComponent implements OnInit {
   @ViewChild(CardsComponent) cardComponent:CardsComponent;
   constructor(public jwt:JwtService,
               private ev:Environment,
-              private announcementService:AnnouncementService) {
-    this.Data=this.announcementService.cardsContent;
+              private announcementService:AnnouncementService,
+              private router:ActivatedRoute) {
   }
   ngOnInit() {
+    this.loadData();
+    this.router.queryParams.subscribe(p=>{
+      if(p){
+        setTimeout(()=>{ this.cardComponent.cardsInit(false,p.id);},0)
+      }
+    })
   }
   addAnnouce(el){
     this.isVisible=true;
     this.mes='';
+  }
+  loadData(){
+    this.Data=this.announcementService.cardsContent;
   }
   confirmModal(){
     this.isConfirmLoading=true;
     setTimeout(()=>{
       this.isConfirmLoading=false;
       this.isVisible=false;
-      this.Data.push({title:new Date().toLocaleString(),content:this.mes});
+      let data={id:this.Data.length+1,title:new Date().toLocaleString(),content:this.mes};
+      this.announcementService.cardsContent.push(data);
+      this.announcementService.sendAnnounce(data);
+      this.loadData();
       setTimeout(()=>{ this.cardComponent.cardsInit(true);},0)
     },0);
   }

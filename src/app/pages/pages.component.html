@@ -2,7 +2,7 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzCollapsedWidth]="0" [nzBreakpoint]="'md'">
     <div class="logo">应用水文地球化学课程网站</div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
-      <li nz-menu-item>
+      <li nz-menu-item routerLinkActive="ant-menu-item-selected">
         <a href="javascript:;" [routerLink]="'index'">
           <span title><i class="anticon anticon-home"></i><span class="nav-text">首页</span></span>
         </a>
@@ -10,35 +10,35 @@
       <li nz-submenu>
         <span title><i class="anticon anticon-user"></i><span class="nav-text">教师</span></span>
         <ul>
-          <li nz-menu-item>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected">
             <a href="javascript:;" [routerLink]="'teacher/teacher-plan'">
               <span title><i class="anticon anticon-home"></i><span class="nav-text">教学计划</span></span>
             </a>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected">
             <a href="javascript:;" [routerLink]="'teacher/homework'">
               <span title><i class="anticon anticon-home"></i><span class="nav-text">课后作业</span></span>
             </a>
           </li>
         </ul>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item routerLinkActive="ant-menu-item-selected">
         <a href="javascript:;" [routerLink]="'upload'">
           <span><i class="anticon anticon-file"></i><span class="nav-text">PDF上传</span></span>
         </a>
       </li>
 
-      <li nz-menu-item>
+      <li nz-menu-item routerLinkActive="ant-menu-item-selected">
         <a href="javascript:;" [routerLink]="'leaveMessage'">
           <span><i class="anticon anticon-file"></i><span class="nav-text">留言</span></span>
         </a>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item routerLinkActive="ant-menu-item-selected">
         <a href="javascript:;" [routerLink]="'handinWork'">
           <span><i class="anticon anticon-file"></i><span class="nav-text">提交作业</span></span>
         </a>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item routerLinkActive="ant-menu-item-selected">
         <a href="javascript:;" [routerLink]="'annoucement'">
           <span><i class="anticon anticon-file"></i><span class="nav-text">公告列表</span></span>
         </a>
@@ -49,13 +49,20 @@
     <nz-header style="background: #fff; padding:0;border-bottom: 1px dashed gray">
       <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
       <div class="nav-icon-wraper">
-        <nz-badge [nzCount]="5" style="top:-3px;">
+        <nz-dropdown [nzTrigger]="'click'">
+        <nz-badge [nzCount]="newMes.length" nz-dropdown style="top:-3px;">
           <ng-template #content>
             <a class="head-example">
-              <nz-avatar nzIcon="bell" nz-dropdown class="icon"></nz-avatar>
+              <nz-avatar nzIcon="bell"  class="icon"></nz-avatar>
             </a>
           </ng-template>
         </nz-badge>
+        <ul class="cusPos" nz-menu>
+            <li nz-menu-item *ngFor="let item of newMes">
+              <a href="javascript:;" [routerLink]="'annoucement'" [queryParams]="{id:item.id}"><i class="anticon anticon-cross-circle-o" style="margin-right: 10px" (click)="delAnnouce($event,item.id)"></i>{{item.content}}</a>
+            </li>
+          </ul>
+        </nz-dropdown>
       </div>
       <div class="nav-icon-wraper">
         <nz-dropdown [nzTrigger]="'click'">

@@ -1,5 +1,5 @@
 <ul id="cards">
-  <li class="card" *ngFor="let item of Data">
+  <li class="card id{{item.id}}" *ngFor="let item of Data|revert">
     <h1>{{item.title}}</h1>
     <p>{{item.content}}</p>
   </li>

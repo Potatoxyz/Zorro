@@ -12,7 +12,7 @@ export class CardsComponent implements OnInit,AfterViewInit{
   ngAfterViewInit(){
    this.cardsInit();
   }
-  cardsInit(isNew:boolean=false){
+  cardsInit(isNew:boolean=false,target?:number){
     var $this = $("#cards"), $cards = $('li.card'),
     $current = $cards.filter('.card--current'), $next;
     $cards.on('click',function(){
@@ -32,6 +32,11 @@ export class CardsComponent implements OnInit,AfterViewInit{
       $current = $cards.eq(-2);
       next($cards.last());
     }
+    if(!isNaN(target)){
+      console.log(target);
+      $current = $(`li.id${target-1}`);
+      next($(`li.id${target}`));
+    }
     if ( !$current.length ) {
       $current = $cards.last();
       next($cards.first());
@@ -40,6 +45,7 @@ export class CardsComponent implements OnInit,AfterViewInit{
   }
 }
 export class CardsModel{
+  id:number;
   title:string;
   content:string;
 }
