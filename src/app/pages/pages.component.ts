@@ -4,6 +4,7 @@ import {JwtService} from "../../shared/jwt.service";
 import {Observable} from "rxjs/Observable";
 import {AnnouncementService} from './announcement/announcement.service';
 import {CardsModel} from './components/cards/cards.component';
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   selector: 'app-pages',
@@ -14,12 +15,16 @@ export class PagesComponent implements OnInit {
   isCollapsed = false;
   links:{parentLink:string,childLink:string}={parentLink:'',childLink:''};
   newMes:Array<CardsModel>=[];
-  constructor(private jwt: JwtService,
+  role="";
+  constructor(
+              private jwt: JwtService,
+              private auth: AuthService,
               private Router: Router,
               private activatedRoute: ActivatedRoute,
               private announcementService:AnnouncementService) {
     this.newMes.push(this.announcementService.cardsContent[3])
-
+    this.role=this.auth.getAuth();
+    console.log(this.role);
   }
 
   ngOnInit() {

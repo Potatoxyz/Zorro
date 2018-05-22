@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {ComponentsModule} from "../components/components.module";
 import {FormsModule} from "@angular/forms";
 import {HomeworkComponent} from "./homework/homework.component";
+import {UploadComponent} from './upload/upload.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {HomeworkComponent} from "./homework/homework.component";
     RouterModule.forChild(route),
   ],
   providers:[TeachPlanService],
-  declarations: [TeacherComponent, TeachPlanComponent,HomeworkComponent]
+  declarations: [TeacherComponent, TeachPlanComponent,HomeworkComponent,UploadComponent]
 })
 export class TeacherModule { }

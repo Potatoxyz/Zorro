@@ -4,11 +4,15 @@ import {Observable} from "rxjs/Observable";
 import {Environment} from "../../../shared/environment";
 @Injectable()
 export class LoginService{
-  url;
+  loginUrl;registerUrl;
   constructor(private api:ApiService,private ev:Environment){
-    this.url=ev.loginUrl;
+    this.loginUrl=ev.loginUrl;
+    this.registerUrl=ev.registerUrl;
   }
   _DoLogin(body:any):Observable<any>{
-    return this.api.post(this.url,body);
+    return this.api.post(this.loginUrl,body);
+  }
+  _DoRegister(body:any):Observable<any>{
+    return this.api.post(this.registerUrl,body);
   }
 }

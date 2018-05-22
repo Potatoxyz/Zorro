@@ -8,7 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgZorroAntdModule} from "ng-zorro-antd";
 import {PagesComponent} from "./pages.component";
-import { UploadComponent } from './upload/upload.component';
+import { UploadComponent } from './teacher/upload/upload.component';
 import { LoginComponent } from './login/login.component';
 import {ApiService} from '../../shared/api.service';
 import {JwtService} from "../../shared/jwt.service";
@@ -23,6 +23,7 @@ import {Environment} from '../../shared/environment';
 import { HandinWorkComponent } from './handin-work/handin-work.component';
 import {AnnouncementComponent} from './announcement/announcement.component';
 import {AnnouncementService} from './announcement/announcement.service';
+import {AuthService} from '../../shared/auth.service';
 
 @NgModule({
   imports: [
@@ -37,8 +38,8 @@ import {AnnouncementService} from './announcement/announcement.service';
     NgbModule.forRoot(),
     RouterModule.forChild(route),
   ],
-  providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment,AnnouncementService],
+  providers:[ApiService,JwtService,PagesRoutingGuard,EmojiService,Environment,AnnouncementService,AuthService],
   declarations: [ConverLinkDirective,PagesComponent,IndexComponent,
-    UploadComponent, LoginComponent, LeaveMessageComponent, HandinWorkComponent ,AnnouncementComponent]
+     LoginComponent, LeaveMessageComponent, HandinWorkComponent ,AnnouncementComponent]
 })
 export class PagesModule { }

@@ -1,12 +1,12 @@
 <div style="position: relative">
   <app-cards [Data]="Data"></app-cards>
-  <div class="add">
+  <div class="add" *ngIf="role=='teacher'">
     <div #add (click)="addAnnouce(add)">
       <i class="fa fa-plus fa-3x"></i>
     </div>
   </div>
 </div>
-<nz-modal [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="isVisible=false">
+<nz-modal  [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="isVisible=false">
   <ng-template #modalTitle>发布公告</ng-template>
   <ng-template #modalContent>
     <textarea class="form-control" rows="5" [(ngModel)]="mes"></textarea>

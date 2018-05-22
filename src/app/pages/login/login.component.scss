@@ -1,10 +1,33 @@
-.login-form {
+:host{
+  overflow: hidden;
+}
+form{
   position: fixed;
+  transition: all ease 0.5s;
+  min-width: 400px;
+}
+.login-form {
   left: 50%;
   margin-left: -200px;
   top: 35vh;
+
+}
+.register-form{
+  left: 150%;
+  margin-left: -200px;
+  top: 30vh;
+  div.back{
+    padding:15px 0;
+  }
 }
 
+.head-title{
+  width: 560px;
+  position: fixed;
+  left: 50%;
+  margin-left: -280px;
+  top: 15vh;
+}
 .login-form-forgot {
   float: right;
 }
@@ -12,3 +35,7 @@
 .login-form-button {
   width: 100%;
 }
+.has-error{
+  color:#f04134;
+}
+

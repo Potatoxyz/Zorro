@@ -1,3 +1,6 @@
+<div class="head-title">
+  <h3 class="text-center">《应用水文地球化学研究生核心课程网站》</h3>
+</div>
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
   <div nz-form-item>
     <div nz-form-control>
@@ -24,10 +27,51 @@
       <label nz-checkbox formControlName="remember">
         <span>Remember me</span>
       </label>
-      <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
-      <button nz-button class="login-form-button" [nzLoading]="loading" (click)="loading=true" [nzType]="'primary'" [nzSize]="'large'">Log in</button>
+      <button [disabled]="!validateForm.valid" nz-button class="login-form-button" [nzLoading]="loading" (click)="loading=true" [nzType]="'primary'" [nzSize]="'large'">Log in</button>
       Or
-      <a href="">register now!</a>
+      <a href="javascript:;" (click)="toggleForm(1)">register now!</a>
+    </div>
+  </div>
+</form>
+
+<form nz-form [formGroup]="validateForm1" class="register-form" (ngSubmit)="doRegister()">
+  <div class="back">
+    <p class="text-right" (click)="toggleForm(0)">返回登录<i class="fa fa-arrow-right"></i></p>
+  </div>
+  <div nz-form-item>
+    <div nz-form-control>
+      <nz-input formControlName="userName" [nzPlaceHolder]="'Username'" [nzSize]="'large'">
+        <ng-template #prefix>
+          <i class="anticon anticon-user"></i>
+        </ng-template>
+      </nz-input>
+      <div nz-form-explain *ngIf="validateForm1.controls.userName.dirty&&validateForm1.controls.userName.hasError('required')">请输入用户名 !</div>
+    </div>
+  </div>
+  <div nz-form-item>
+    <div nz-form-control>
+      <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+        <ng-template #prefix>
+          <i class="anticon anticon-lock"></i>
+        </ng-template>
+      </nz-input>
+      <div nz-form-explain *ngIf="validateForm1.controls.password.dirty&&validateForm1.controls.password.hasError('required')">请输入密码 !</div>
+    </div>
+  </div>
+  <div nz-form-item>
+    <div nz-form-control>
+      <nz-input [ngClass]="{'has-error':validateForm1.controls.password1.dirty&&validateForm1.value.password!=validateForm1.value.password1}" formControlName="password1" [nzType]="'password'" [nzPlaceHolder]="'Repeat password'" [nzSize]="'large'">
+        <ng-template #prefix>
+          <i class="anticon anticon-lock"></i>
+        </ng-template>
+      </nz-input>
+      <div nz-form-explain *ngIf="validateForm1.controls.password1.dirty&&validateForm1.controls.password1.hasError('required')">请再次输入密码 !</div>
+      <div nz-form-explain [ngClass]="{'has-error':validateForm1.value.password!=validateForm1.value.password1}" *ngIf="validateForm1.controls.password1.dirty&&validateForm1.value.password!=validateForm1.value.password1">两次密码不一致 !</div>
+    </div>
+  </div>
+  <div nz-form-item>
+    <div nz-form-control>
+      <button nz-button [disabled]="!validateForm1.valid" class="login-form-button" [nzLoading]="loading" (click)="loading=true" [nzType]="'primary'" [nzSize]="'large'">Register</button>
     </div>
   </div>
 </form>

@@ -4,6 +4,7 @@ import {Environment} from "../../../shared/environment";
 import {AnnouncementService} from './announcement.service';
 import {CardsComponent} from '../components/cards/cards.component';
 import {ActivatedRoute, Route, Router, Routes} from '@angular/router';
+import {AuthService} from '../../../shared/auth.service';
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
@@ -14,11 +15,15 @@ export class AnnouncementComponent implements OnInit {
   isVisible:boolean=false;
   isConfirmLoading:boolean=false;
   mes:string='';
+  role:string='';
   @ViewChild(CardsComponent) cardComponent:CardsComponent;
-  constructor(public jwt:JwtService,
+  constructor(
+              public jwt:JwtService,
+              private auth:AuthService,
               private ev:Environment,
               private announcementService:AnnouncementService,
               private router:ActivatedRoute) {
+    this.role=this.auth.getAuth();
   }
   ngOnInit() {
     this.loadData();

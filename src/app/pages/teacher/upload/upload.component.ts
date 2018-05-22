@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NzMessageService, UploadFile} from "ng-zorro-antd";
-import {Subscription} from "rxjs/Subscription";
-import {JwtService} from "../../../shared/jwt.service";
 import {UploadService} from "./upload.service";
-import {Environment} from "../../../shared/environment";
-
+import {JwtService} from '../../../../shared/jwt.service';
+import {Environment} from '../../../../shared/environment';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
