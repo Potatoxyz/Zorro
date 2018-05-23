@@ -17,7 +17,9 @@ export class UploadComponent implements OnInit {
   _options = null;
   _value: any[] = null;
   init_options:any;
-  selectedChapter:string;
+  subjectName:string="应用水文地球化学";
+  chapter:number;
+  des:string;
   Header={};
   constructor(private msg: NzMessageService,public jwt:JwtService,
               private uploadService:UploadService,
@@ -36,11 +38,5 @@ export class UploadComponent implements OnInit {
   };
   statuChange(event){
     console.log(event);
-  }
-
-  _console(value) {
-    //console.log(value);
-    this.selectedChapter=value.toString();
-    console.log(this.selectedChapter);
   }
 }

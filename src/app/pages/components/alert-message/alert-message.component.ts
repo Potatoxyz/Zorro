@@ -16,4 +16,7 @@ export class AlertMessageComponent  {
       this._message.create('error',err.error.message);
     }
   };
+  alertSuccess(message){
+    this._message.create('success',message);
+  }
 }

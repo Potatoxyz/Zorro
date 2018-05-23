@@ -1,15 +1,28 @@
 <div class="mycontainer">
+<!--<div class="clearfix" style="margin-bottom: 15px;">-->
+  <!--<nz-cascader-->
+    <!--[class.class123]="true"-->
+    <!--[nzOptions]="_options"-->
+    <!--[(ngModel)]="_value"-->
+    <!--(ngModelChange)="_console($event)"-->
+    <!--[nzPlaceHolder]="'请选择科目和章节'"-->
+    <!--[nzAllowClear]="false"-->
+    <!--(nzChange)="_console($event)">-->
+  <!--</nz-cascader>-->
+<!--</div>-->
 <div class="clearfix" style="margin-bottom: 15px;">
-  <nz-cascader
-    [class.class123]="true"
-    [nzOptions]="_options"
-    [(ngModel)]="_value"
-    (ngModelChange)="_console($event)"
-    [nzPlaceHolder]="'请选择科目和章节'"
-    [nzAllowClear]="false"
-    (nzChange)="_console($event)">
-  </nz-cascader>
+    <span class="tille">课程名称：</span>
+    <input nz-input placeholder="《应用水文地球化学》" [disabled]="true"  style="margin-top: 10px;cursor: not-allowed" [(ngModel)]="subjectName">
 </div>
+  <div class="clearfix" style="margin-bottom: 15px;">
+    <span class="tille">章节：</span>
+    <div class="mybox">
+      <span>第</span>
+      <input nz-input type="number"  placeholder="1" style="max-width: 50px;text-align: center;margin-right: 20px" [(ngModel)]="chapter">
+      <span>章</span>
+      <input nz-input placeholder="章节标题" [(ngModel)]="des">
+    </div>
+  </div>
 <div class="clearfix">
   <nz-upload
     nzAction={{url}}
@@ -19,7 +32,7 @@
     [nzShowButton]="fileList.length < 3"
     [nzMultiple]="true"
     [nzLimit]="0"
-    [nzData]="{'targetfile':selectedChapter}"
+    [nzData]="{'subject':subjectName,'chapter':chapter,'des':des}"
     [nzAccept]="'image/*'"
     (nzChange)="statuChange($event)"
     [nzPreview]="handlePreview">

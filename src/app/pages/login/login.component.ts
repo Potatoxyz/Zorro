@@ -46,7 +46,6 @@ export class LoginComponent extends AlertMessageComponent implements OnInit {
       let p=this.validateForm.value.password;
       let r=this.validateForm.value.remember;
       let body={userName:u,password:p};
-      console.log( this.jwt.getToken());
       this.loginService._DoLogin(body).subscribe(data=>{
         console.log(data);
         this.auth.delAuth();
@@ -56,15 +55,19 @@ export class LoginComponent extends AlertMessageComponent implements OnInit {
         this.loading=false;
       },err=>{
         this.loading=false;
+        console.log(err);
         this.handError(err);
       });
   }
   doRegister(){
     let u=this.validateForm1.value.userName;
     let p=this.validateForm1.value.password;
-    let body={userName:u,password:p};
+    let body={userName:u,password:p,role:'student'};
     this.loginService._DoRegister(body).subscribe(data=>{
       console.log(data);
+      if(data.success){
+        this.alertSuccess(data.message)
+      }
       this.loading=false;
     },err=>{
       this.loading=false;

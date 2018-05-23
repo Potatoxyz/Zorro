@@ -11,3 +11,12 @@
   font-size: 12px;
   margin-top: 8px;
 }
+.mybox{
+  display: flex;
+  margin-top: 10px;
+  align-content: center;
+  span{
+    line-height: 28px;
+    margin-right: 20px
+  }
+}
