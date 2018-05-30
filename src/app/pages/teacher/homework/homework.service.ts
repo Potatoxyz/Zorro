@@ -24,18 +24,18 @@ export class HomeworkService{
   ];
   fileList = [{
     uid: 1,
-    name: 'xxx.png',
+    name: 'xxx.word',
     status: 'done',
     response: '服务端发生错误', // custom error message to show
     url: 'http://www.baidu.com,'
   }, {
     uid: 2,
-    name: 'yyy.png',
+    name: 'yyy.word',
     status: 'done',
     url: 'http://www.baidu.com',
   }, {
     uid: 3,
-    name: 'zzz.png',
+    name: 'zzz.word',
     status: 'error',
     response: '服务端发生错误', // custom error message to show
     url: 'http://www.baidu.com',
