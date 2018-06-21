@@ -2,7 +2,11 @@
 nz-timepicker /deep/ .ant-time-picker-input, nz-datepicker /deep/ .ant-calendar-picker-input {
   color: black;
 }
+body{
+  background: linear-gradient(#7f7fd5,#86a8e7,#91eae4);
 
+  //#7f7fd5 #86a8e7 #91eae4
+}
 .myTextarea {
   width: 100%;
   padding: 5px;
