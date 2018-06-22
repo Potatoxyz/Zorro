@@ -9,8 +9,8 @@
     <div class="card bordered-hover" [ngStyle]="gridStyle" *ngFor="let card of cardsContent;let i=index;" (click)="navgateToPic(card.urls)">
       <span>
         <span>
-          <p>{{card.chapter}}</p>
-          <p>{{card.des}}</p>
+          <p class="chapterTitle">{{card.chapter}}</p>
+          <p class="chapterDes">{{card.des}}</p>
         </span>
       </span>
     </div>

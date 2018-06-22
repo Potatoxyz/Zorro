@@ -4,7 +4,7 @@ export class ConverLinkDirective implements PipeTransform{
   constructor(){}
   links=[
     {linkName:'index',text:'首页'},
-    {linkName:'upload',text:'上传'},
+    {linkName:'upload',text:'课件上传'},
     {linkName:'teacher',text:'教师'},
     {linkName:'teacher-plan',text:'教学计划'},
     {linkName:'leaveMessage',text:'留言'},
