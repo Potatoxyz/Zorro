@@ -7,10 +7,10 @@ import {Subject} from 'rxjs/Subject';
 export class AnnouncementService{
   private sendOutMes:Subject<CardsModel>=new Subject<CardsModel>();
   cardsContent:Array<CardsModel>=[
-    {id:1,title:'2018/5/9  下午15:13',content:'今天放假今天放假今天放假今天放假'},
+    {id:1,title:'2018/5/9  下午15:13',content:'星期六上午三四节在3教605上习题课，同学们切勿迟到'},
     {id:2,title:'2018/5/10 下午15:13',content:'今天放假今天放假今天放假今天放假'},
     {id:3,title:'2018/5/11 下午15:13',content:'今天放假今天放假今天放假今天放假'},
-    {id:4,title:'2018/5/12 下午15:13',content:'这个星期六上午三四节到3号教学楼605上补习课，请同学们切勿迟到！！！'},
+    {id:4,title:'2018/5/12 下午15:13',content:'星期六上午三四节在3教605上习题课，同学们切勿迟到！！！！'},
   ];
   sendAnnounce(val){
     this.sendOutMes.next(val);
