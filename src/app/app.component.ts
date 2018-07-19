@@ -9,12 +9,12 @@ import {BaThemeSpinner} from './theme/service/baThemeSpinner';
 })
 export class AppComponent{
   title = 'app';
-  constructor(private _spinner: BaThemeSpinner,){
+  constructor(private _spinner: BaThemeSpinner){
 
   }
   public ngAfterViewInit(): void {
-    BaThemePreloader.load().then((values) => {
+    // BaThemePreloader.load().then((values) => {
       this._spinner.hide();
-    });
+    // });
   }
 }
