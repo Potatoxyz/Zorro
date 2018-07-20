@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  loginUrl: 'http://localhost:8080/server/login',
-  registerUrl: 'http://localhost:8080/server/register',
-  uploadPDF: 'http://localhost:8080/server/upload',
-  uploadHomework: 'http://localhost:8080/server/uploadHomework',
+  loginUrl: 'http://localhost:4900/server/login',
+  registerUrl: 'http://localhost:4900/server/register',
+  uploadPDF: 'http://localhost:4900/server/upload',
+  uploadHomework: 'http://localhost:4900/server/uploadHomework',
 };
